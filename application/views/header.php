@@ -90,16 +90,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- Logo -->
 		<a href="javascript:void(0);" class="logo button" data-action="home">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
-			<span class="logo-mini">
-				<img src="<?= base_url()?>assets/images/logo_big.png" class="img-responsive" alt="BIG">
-			</span>
-			<!-- logo for regular state and mobile devices -->
-			<span class="logo-lg">
-				<div class="pull-left">
-					<img src="<?= base_url()?>assets/images/big.png" class="img-responsive" alt="BIG">
-				</div>
-				<div class="pull-left"></div>
-			</span>
+		      <span class="logo-mini"><b>A</b>LT</span>
+		      <!-- logo for regular state and mobile devices -->
+		      <span class="logo-lg"><b>Admin</b>LTE</span>
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top">
@@ -109,31 +102,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</a>
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
-					<!-- User Account: style can be found in dropdown.less -->
-					<li class="dropdown user user-menu">
-						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-														<img src="http://localhost/qa/a/manuseradmin/lihatfoto/admin@big.go.id" class="user-image" alt="User Image">
-														<span class="hidden-xs">Admin</span>
-						</a>
-						<ul class="dropdown-menu">
-							<!-- User image -->
-							<li class="user-header bg-light-blue">
-																<img src="http://localhost/qa/a/manuseradmin/lihatfoto/admin@big.go.id" class="img-circle" alt="User Image">
-																<p>
-									Admin									<small>PPRT</small>
-								</p>
-							</li>
-							<li class="user-footer">
-								<div class="pull-left">
-									<a href="http://localhost/qa/a/manuseradmin/lihatprofil/admin@big.go.id" class="btn btn-default btn-flat">Profil</a>
-								</div>
-								<div class="pull-right">
-									<a href="http://localhost/qa/login" class="btn btn-default btn-flat">Keluar</a>
-								</div>
-							</li>
-						</ul>
+					 <li class="dropdown user user-menu">
+			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			              <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
+			              <span class="hidden-xs">Alexander Pierce</span>
+			            </a>
+			            <ul class="dropdown-menu">
+			              <!-- User image -->
+			              <li class="user-header">
+			                <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
 
-					</li>
+			                <p>
+			                  Alexander Pierce - Web Developer
+			                  <small>Member since Nov. 2012</small>
+			                </p>
+			              </li>
+			              <!-- Menu Body -->
+			              <li class="user-body">
+			                <div class="row">
+			                  <div class="col-xs-4 text-center">
+			                    <a href="#">Followers</a>
+			                  </div>
+			                  <div class="col-xs-4 text-center">
+			                    <a href="#">Sales</a>
+			                  </div>
+			                  <div class="col-xs-4 text-center">
+			                    <a href="#">Friends</a>
+			                  </div>
+			                </div>
+			                <!-- /.row -->
+			              </li>
+			              <!-- Menu Footer-->
+			              <li class="user-footer">
+			                <div class="pull-left">
+			                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+			                </div>
+			                <div class="pull-right">
+			                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+			                </div>
+			              </li>
+			            </ul>
+			          </li>
 				</ul>
 			</div>
 		</nav>
