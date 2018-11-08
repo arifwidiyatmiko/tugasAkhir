@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/styles/skins/_all-skins.min.css">
-	
+
 	<link rel="stylesheet" href="<?= base_url();?>assets/styles/loading.css">
 
 	<style>
@@ -42,9 +42,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			bottom: 0;
 			overflow: auto;
 		}
-		 
+
    		 #mapDiv { height: 400px; width: 100 !important;}
-   		 
+
    		.fileUpload {
 		    position: relative;
 		    overflow: hidden;
@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- LEAFLET -->
 	  <script src="<?php echo base_url();?>assets/jQuery/jquery-1-11-1.min.js"></script>
 	  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
-	 
+
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	
+
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -90,9 +90,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- Logo -->
 		<a href="javascript:void(0);" class="logo button" data-action="home">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
-		      <span class="logo-mini"><b>A</b>LT</span>
-		      <!-- logo for regular state and mobile devices -->
-		      <span class="logo-lg"><b>Admin</b>LTE</span>
+			<span class="logo-mini">
+				<img src="<?= base_url()?>assets/images/logo_big.png" class="img-responsive" alt="BIG">
+			</span>
+			<!-- logo for regular state and mobile devices -->
+			<span class="logo-lg">
+				<div class="pull-left">
+					<img src="<?= base_url()?>assets/images/big.png" class="img-responsive" alt="BIG">
+				</div>
+				<div class="pull-left"></div>
+			</span>
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top">
@@ -102,31 +109,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</a>
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
+					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu">
-			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			              <span class="hidden-xs">Alexander Pierce</span>
-			            </a>
-			            <ul class="dropdown-menu">
-			              <!-- User image -->
-			              <li class="user-header">
-			                <p>
-			                  Alexander Pierce - Web Developer
-			                  <small>Member since Nov. 2012</small>
-			                </p>
-			              </li>
-			              <!-- Menu Body -->
-			              
-			              <!-- Menu Footer-->
-			              <li class="user-footer">
-			                <div class="pull-left">
-			                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-			                </div>
-			                <div class="pull-right">
-			                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-			                </div>
-			              </li>
-			            </ul>
-			          </li>
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+														<img src="http://localhost/qa/a/manuseradmin/lihatfoto/admin@big.go.id" class="user-image" alt="User Image">
+														<span class="hidden-xs">Admin</span>
+						</a>
+						<ul class="dropdown-menu">
+							<!-- User image -->
+							<li class="user-header bg-light-blue">
+																<img src="http://localhost/qa/a/manuseradmin/lihatfoto/admin@big.go.id" class="img-circle" alt="User Image">
+																<p>
+									Admin									<small>PPRT</small>
+								</p>
+							</li>
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="http://localhost/qa/a/manuseradmin/lihatprofil/admin@big.go.id" class="btn btn-default btn-flat">Profil</a>
+								</div>
+								<div class="pull-right">
+									<a href="http://localhost/qa/login" class="btn btn-default btn-flat">Keluar</a>
+								</div>
+							</li>
+						</ul>
+
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -141,6 +148,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li>
 					<a href="<?=base_url()?>">
 						<i class="fa fa-home"></i> <span>Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="<?=base_url()?>">
+						<i class="fa fa-home"></i> <span>Mahasiswa</span>
 					</a>
 				</li>
 				<li>
