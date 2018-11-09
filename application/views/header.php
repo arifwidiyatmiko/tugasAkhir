@@ -160,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 				</li>
 				<li>
-					<a href="<?=base_url()?>">
+					<a href="<?=base_url()?>datamahasiswa">
 						<i class="fa fa-home"></i> <span>Mahasiswa</span>
 					</a>
 				</li>

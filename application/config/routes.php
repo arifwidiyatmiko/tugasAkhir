@@ -59,4 +59,7 @@ $route['mahasiswa'] = 'mahasiswa/Dashboard';
 //Buat diarahkan ke controller Dosen
 $route['datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
 $route['Datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
-// $route['Kebijakan/delete'] = 'kebijakan/config';
+
+//Buat diarahkan ke detail mahasiswa
+$route['detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';
+$route['Detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';
