@@ -55,6 +55,14 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['Mahasiswa'] = 'mahasiswa/Dashboard';
 $route['mahasiswa'] = 'mahasiswa/Dashboard';
+
 $route['Mahasiswa/biodata'] = 'mahasiswa/Dashboard/biodata';
 $route['mahasiswa/biodata'] = 'mahasiswa/Dashboard/biodata';
-// $route['Kebijakan/delete'] = 'kebijakan/config';
+
+//Buat diarahkan ke controller Dosen
+$route['datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
+$route['Datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
+
+//Buat diarahkan ke detail mahasiswa
+$route['detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';
+$route['Detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';
