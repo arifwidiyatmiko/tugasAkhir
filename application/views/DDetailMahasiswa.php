@@ -38,6 +38,7 @@
 		          <li><a href="#tab_2" data-toggle="tab">Bidang Kajian</a></li>
 		          <li><a href="#tab_3" data-toggle="tab">Seminar Tugas Akhir</a></li>
               <li><a href="#tab_4" data-toggle="tab">Ujian Tugas Akhir</a></li>
+              <li><a href="#tab_5" data-toggle="tab">Kendali Bimbingan</a></li>
 		          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
 		        </ul>
 		        <div class="tab-content">
@@ -265,13 +266,250 @@
 		</div>
 		              <!-- /.tab-pane -->
 		<div class="tab-pane" id="tab_3">
-		                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-		                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-		                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-		                It has survived not only five centuries, but also the leap into electronic typesetting,
-		                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-		                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-		                like Aldus PageMaker including versions of Lorem Ipsum.
+      <section class="content">
+      <div class="row">
+  <!-- /.col -->
+        <div class="col-md-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#jadwal" data-toggle="tab">Jadwal & Kelengkapan Syarat Seminar</a></li>
+              <li><a href="#nilai" data-toggle="tab">Nilai Sebagai Penyaji</a></li>
+              <li><a href="#nilaibahas" data-toggle="tab">Nilai Sebagai Pembahas</a></li>
+              <li><a href="#kehadiran" data-toggle="tab">Kehadiran Seminar</a></li>
+      <!-- <li><a href="#settings" data-toggle="tab">Settings</a></li> -->
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="jadwal">
+        <!-- Post -->
+                <label>Jadwal Seminar</label>
+                <div class="box box-primary">
+          <!-- <div class="form-group"> -->
+                  <form class="form-horizontal">
+                  <div class="form-group">
+                    <label  for="inputName" class="col-sm-2 control-label">Status Jadwal Seminar</label>
+                    <div class="col-sm-10">
+                      <h5>Belum Mengajukan Jadwal Seminar</h5>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  for="inputName" class="col-sm-2 control-label">Hari/Tanggal Seminar</label>
+                    <div class="col-sm-10">
+                      <h5>-</h5>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  for="inputName" class="col-sm-2 control-label">Jam Seminar</label>
+                    <div class="col-sm-10">
+                      <h5>-</h5>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  for="inputName" class="col-sm-2 control-label">Ruangan Seminar</label>
+                    <div class="col-sm-10">
+                      <h5>-</h5>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  for="inputName" class="col-sm-2 control-label">Moderator Seminar</label>
+                    <div class="col-sm-10">
+                      <h5>-</h5>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  for="inputName" class="col-sm-2 control-label">Pembahas Seminar/NIM</label>
+                    <div class="col-sm-10">
+                      <h5>-</h5>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <label>Dokumen Syarat Seminar</label>
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>Nama Dokumen</th>
+                    <th>Nomor Form/Surat</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      Form Pendaftaran Seminar
+                    </td>
+                    <td>-</td>
+                    <td>Sudah Unggah</td>
+                    <td>
+                      <button>
+                        <a href="<?php echo base_url();?>">
+                        Unduh
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Form Persetujuan Seminar
+                    </td>
+                    <td>FRM/DPD/PKL/018</td>
+                    <td>Sudah Unggah</td>
+                    <td>
+                      <button>
+                        <a href="<?php echo base_url();?>">
+                        Unduh
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Form Berita Acara Seminar
+                    </td>
+                    <td>FRM/DPD/PKL/019</td>
+                    <td>Sudah Unggah</td>
+                    <td>
+                      <button>
+                        <a href="<?php echo base_url();?>">
+                        Unduh
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+      <!-- /.tab-pane -->
+              <div class="tab-pane" id="nilai">
+        <!-- The timeline -->
+                <div class="box-body table-responsive no-padding">
+                  <button>Masukkan Nilai</button>
+                  <table class="table table-hover">
+                    <tr>
+                      <th>Aspek</th>
+                      <th>Bobot</th>
+                      <th>Nilai</th>
+                      <th>Bobot x Nilai</th>
+                    </tr>
+                    <tr>
+                      <td>Format dan substansi makalah</td>
+                      <td>30%</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                      <td>Penyajian makalah</td>
+                      <td>30%</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                      <td>Argumentasi dalam forum diskusi</td>
+                      <td>40%</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>100%</td>
+                      <td colspan=2>-</td>
+                    </tr>
+                  </table>
+                </div>
+                <label>Dokumen Form Nilai Seminar</label>
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                    <tr>
+                      <th>Nama Dokumen</th>
+                      <th>Nomor Form/Surat</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        Form Pendaftaran Seminar
+                      </td>
+                      <td>-</td>
+                      <td>Sudah Unggah</td>
+                      <td>
+                        <button>
+                          <a href="<?php echo base_url();?>">
+                          Unduh
+                          </a>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Form Persetujuan Seminar
+                      </td>
+                      <td>FRM/DPD/PKL/018</td>
+                      <td>Sudah Unggah</td>
+                      <td>
+                        <button>
+                          <a href="<?php echo base_url();?>">
+                          Unduh
+                          </a>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Form Berita Acara Seminar
+                      </td>
+                      <td>FRM/DPD/PKL/019</td>
+                      <td>Sudah Unggah</td>
+                      <td>
+                        <button>
+                          <a href="<?php echo base_url();?>">
+                          Unduh
+                          </a>
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="active tab-pane" id="nilaibahas">
+        <!-- Post -->
+                <label>Nilai Sebagai Pembahas</label>
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                    <tr>
+                      <th>Nama Penyaji</th>
+                      <th>NIM Penyaji</th>
+                      <th>Tanggal Seminar</th>
+                      <th>Waktu</th>
+                      <th>Nilai</th>
+                    </tr>
+                    <tr>
+                      <td>Budi</td>
+                      <td>J3D115060</td>
+                      <td>22 Januari 2019</td>
+                      <td>10.00</td>
+                      <td>80</td>
+                    </tr>
+                    <tr>
+                      <td>Susi</td>
+                      <td>J3D115051</td>
+                      <td>22 Januari 2019</td>
+                      <td>13.00</td>
+                      <td>80</td>
+                    </tr>
+                    <tr>
+                      <td colspan=4>Rata-rata Nilai</td>
+                      <td>80</td>
+                    </tr>
+                  </table>
+                </div>
+            </div>
+          </div>
+    <!-- /.tab-content -->
+        </div>
+    <!-- /.nav-tabs-custom -->
+      </div>
+  <!-- /.col -->
+    </div>
+<!-- /.row -->
+  </section>
 		</div>
 		              <!-- /.tab-pane -->
   </div>
