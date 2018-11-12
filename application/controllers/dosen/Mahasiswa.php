@@ -20,11 +20,11 @@ class Mahasiswa extends CI_Controller {
 	 */
 	public function listMahasiswa()
 	{
-		$this->load->view('DListmahasiswa');
+		$this->load->view('DListMahasiswa');
 	}
 
   public function detailMahasiswa()
 	{
-		$this->load->view('DDetailmahasiswa');
+		$this->load->view('DDetailMahasiswa');
 	}
 }

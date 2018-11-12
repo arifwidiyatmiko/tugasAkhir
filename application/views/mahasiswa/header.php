@@ -65,6 +65,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- LEAFLET -->
 	  <script src="<?php echo base_url();?>assets/jQuery/jquery-1-11-1.min.js"></script>
 	  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+	  <script src="<?= base_url()?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?= base_url()?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="<?= base_url()?>assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url()?>assets/plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="<?= base_url()?>assets/plugins/datatables.net-Buttons-1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url()?>assets/plugins/datatables.net-JSZip-2.5.0/jszip.min.js"></script>
+<script src="<?= base_url()?>assets/plugins/datatables.net-Buttons-1.5.2/js/buttons.html5.min.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?= base_url()?>assets/plugins/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- Slimscroll -->
+<script src="<?= base_url()?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?= base_url()?>assets/plugins/fastclick/lib/fastclick.js"></script>
+<!-- Chosen -->
+<script src="<?= base_url()?>assets/plugins/chosen/chosen.jquery.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= base_url()?>assets/scripts/adminlte.min.js"></script>
+<!-- SELECT 2 -->
+<script src="<?= base_url()?>assets/plugins/select2/select2.min.js"></script>
+
+<!-- Datepicker -->
+<script src="<?= base_url()?>assets/datepicker/js/bootstrap-datepicker.min.js"></script>
 
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -90,9 +118,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- Logo -->
 		<a href="javascript:void(0);" class="logo button" data-action="home">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
-		      <span class="logo-mini"><b>A</b>LT</span>
+		      <span class="logo-mini"><b>SV</b> IPB</span>
 		      <!-- logo for regular state and mobile devices -->
-		      <span class="logo-lg"><b>Admin</b>LTE</span>
+		      <span class="logo-lg"><b>Sekolah Vokasi</b> IPB</span>
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top">
@@ -104,8 +132,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<ul class="nav navbar-nav">
 					 <li class="dropdown user user-menu">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			            	<!-- <?php print_r($this->session->userdata('mahasiswa'));?> -->
 			              <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
-			              <span class="hidden-xs">Alexander Pierce</span>
+			              <span class="hidden-xs"><?=$this->session->userdata('mahasiswa')->nim?></span>
 			            </a>
 			            <ul class="dropdown-menu">
 			              <!-- User image -->
@@ -113,32 +142,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			                <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
 
 			                <p>
-			                  Alexander Pierce - Web Developer
-			                  <small>Member since Nov. 2012</small>
+			                 <?=$this->session->userdata('mahasiswa')->namaLengkap." - ".$this->session->userdata('mahasiswa')->nim?>
+			                  <small><?=$this->session->userdata('mahasiswa')->programStudi?></small>
 			                </p>
 			              </li>
-			              <!-- Menu Body -->
-			              <li class="user-body">
-			                <div class="row">
-			                  <div class="col-xs-4 text-center">
-			                    <a href="#">Followers</a>
-			                  </div>
-			                  <div class="col-xs-4 text-center">
-			                    <a href="#">Sales</a>
-			                  </div>
-			                  <div class="col-xs-4 text-center">
-			                    <a href="#">Friends</a>
-			                  </div>
-			                </div>
 			                <!-- /.row -->
 			              </li>
 			              <!-- Menu Footer-->
 			              <li class="user-footer">
-			                <div class="pull-left">
-			                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-			                </div>
 			                <div class="pull-right">
-			                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+			                  <a href="<?= base_url()?>Auth/out/" class="btn btn-default btn-flat">Keluar</a>
 			                </div>
 			              </li>
 			            </ul>
