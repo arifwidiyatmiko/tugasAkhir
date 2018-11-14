@@ -1,7 +1,6 @@
 <?php
-  $this->load->view('header');
+  $this->load->view('dosen/header');
 ?>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -49,18 +48,19 @@
           <!-- Profile Image -->
                 <div class="box box-primary">
                   <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="<?= base_url();?>assets/images/photos/mahasiswadefault.jpg" alt="User profile picture">
-                    <h3 class="profile-username text-center">Samuel</h3>
-                    <p class="text-muted text-center">J3D115011</p>
+                    <?php foreach($detailmhs as $d){ ?>
+                    <!-- <img class="profile-user-img img-responsive img-circle" src="<?php base_url();?>assets/images/photos/mahasiswadefault.jpg" alt="User profile picture"> -->
+                    <h3 class="profile-username text-center"><?php echo $d->namaLengkap?></h3>
+                    <p class="text-muted text-center"><?php echo $d->nim?></p>
                     <ul class="list-group list-group-unbordered">
                       <li class="list-group-item">
-                        <b>Tahun Masuk</b> <a class="pull-right">2015</a>
+                        <b>Tanggal Masuk</b> <a class="pull-right"><?php echo $d->tanggalMasuk?></a>
                       </li>
                       <li class="list-group-item">
-                        <b>Kajian</b> <a class="pull-right">-</a>
+                        <b>Kajian TA</b> <a class="pull-right">-</a>
                       </li>
                       <li class="list-group-item">
-                        <b>Progres</b> <a class="pull-right">Pemilihan Kajian</a>
+                        <b>Progres TA</b> <a class="pull-right">Pemilihan Kajian</a>
                       </li>
                     </ul>
                   </div>
@@ -80,22 +80,114 @@
                     <div class="active tab-pane" id="biodata">
               <!-- Post -->
                       <form class="form-horizontal">
-                        <div class="form-group">
-                          <label for="inputName" class="col-sm-2 control-label">Nama Lengkap</label>
-                          <div class="col-sm-10">
-                            <h5>Samuel</h5>
+                        <div class="col-sm-6 form-group">
+                          <label for="inputName" class="col-sm-6 control-label">Nama Lengkap</label>
+                          <div class="col-sm-6">
+                            <h5><?php echo $d->namaLengkap?></h5>
+                          </div>
+                          <label for="inputEmail" class="col-sm-6 control-label">Tempat/Tanggal Lahir</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->tempatLahir == ""){echo "-";}else {echo $d->tempatLahir?> , <?php echo $d->tanggalLahir;}?></h5>
+                          </div>
+                          <label for="inputEmail" class="col-sm-6 control-label">Agama</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->agama == ""){echo "-";}else {echo $d->agama;}?></h5>
+                          </div>
+                          <label for="inputEmail" class="col-sm-6 control-label">Kewarganegaraan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kewarganegaraan == ""){echo "-";}else {echo $d->kewarganegaraan;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Jenis Kelamin</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->jenisKelamin == ""){echo "-";}else {echo $d->jenisKelamin;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Tinggi Badan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->tinggi == ""){echo "-";}else {echo $d->tinggi;}?> Cm</h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Berat Badan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->berat == ""){echo "-";}else {echo $d->berat;}?> Kg</h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Golongan Darah</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->golonganDarah == ""){echo "-";}else {echo $d->golonganDarah;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Status Kawin</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->statusKawin == ""){echo "-";}else {echo $d->statusKawin;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Nama Ayah</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->namaAyah == ""){echo "-";}else {echo $d->namaAyah;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">NIK Ayah</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->nikAyah == ""){echo "-";}else {echo $d->nikAyah;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Nama Ibu</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->namaIbu == ""){echo "-";}else {echo $d->namaIbu;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">NIK Ibu</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->nikIbu == ""){echo "-";}else {echo $d->nikIbu;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Penghasilan Orang Tua</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->penghasilanParent == ""){echo "-";}else {echo $d->penghasilanParent;}?></h5>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                          <div class="col-sm-10">
-                            <h5>samuel@gmail.com</h5>
+                        <div class="col-sm-6 form-group">
+                          <label for="inputName" class="col-sm-12 control-label">Alamat Berdasarkan Domisili</label>
+                          <label for="inputName" class="col-sm-6 control-label">Alamat</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->alamatTinggal == ""){ echo "-";}else {echo $d->alamatTinggal;}?> RT/RW <?php if($d->rtrwTinggal == ""){ echo "-";}else {echo $d->rtrwTinggal;}?></h5>
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputName" class="col-sm-2 control-label">Alamat Lengkap</label>
-                          <div class="col-sm-10">
-                            <h5>Jl. Ciliwung 2 No 418 Rt 01/02, Kel. Baktijaya, Kec. Sukmajaya Kota Depok</h5>
+                          <label for="inputEmail" class="col-sm-6 control-label">Kelurahan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kelurahanTinggal == ""){echo "-";}else {echo $d->kelurahanTinggal;}?></h5>
+                          </div>
+                          <label for="inputEmail" class="col-sm-6 control-label">Kecamatan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kecamatanTinggal == ""){echo "-";}else {echo $d->kecamatanTinggal;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Kota/Kabupaten</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kotaKabupatenTinggal == ""){echo "-";}else {echo $d->kotaKabupatenTinggal;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Kode Pos</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->posTinggal == ""){echo "-";}else {echo $d->posTinggal;}?></h5>
+                          </div>
+                          <label for="inputName" class="col-sm-12 control-label">Alamat Berdasarkan KTP</label>
+                          <label for="inputName" class="col-sm-6 control-label">Alamat</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->alamatDomisili == ""){ echo "-";}else {echo $d->alamatDomisili;}?> RT/RW <?php if($d->rtrwDomisili == ""){ echo "-";}else {echo $d->rtrwDomisili;}?></h5>
+                          </div>
+                          <label for="inputEmail" class="col-sm-6 control-label">Kelurahan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kelurahanDomisili == ""){echo "-";}else {echo $d->kelurahanDomisili;}?></h5>
+                          </div>
+                          <label for="inputEmail" class="col-sm-6 control-label">Kecamatan</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kecamatanDomisili == ""){echo "-";}else {echo $d->kecamatanDomisili;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Kota/Kabupaten</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->kotaKabupatenDomisili == ""){echo "-";}else {echo $d->kotaKabupatenDomisili;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Kode Pos</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->posDomisili == ""){echo "-";}else {echo $d->posDomisili;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Kontak</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->telepon == ""){echo "-";}else {echo $d->telepon;}?></h5>
+                          </div>
+                          <label for="inputEmail"class="col-sm-6 control-label">Email</label>
+                          <div class="col-sm-6">
+                            <h5><?php if($d->email == ""){echo "-";}else {echo $d->email;}?></h5>
                           </div>
                         </div>
                       </form>
@@ -108,35 +200,30 @@
                         <table class="table table-hover">
                           <tr>
                             <th>Semester</th>
-                            <th>Kelas</th>
                             <th>Indeks Prestasi</th>
                           </tr>
                           <tr>
                             <td>1</td>
-                            <td>A</td>
-                            <td>3.50</td>
+                            <td><?php if($d->ips1 == ""){echo "-";}else {echo $d->ips1;}?></td>
                           </tr>
                           <tr>
                             <td>2</td>
-                            <td>B</td>
-                            <td>3.63</td>
+                            <td><?php if($d->ips2 == ""){echo "-";}else {echo $d->ips2;}?></td>
                           </tr>
                           <tr>
                             <td>3</td>
-                            <td>B</td>
-                            <td>3.44</td>
+                            <td><?php if($d->ips3 == ""){echo "-";}else {echo $d->ips3;}?></td>
                           </tr>
                           <tr>
                             <td>4</td>
-                            <td>A</td>
-                            <td>3.50</td>
+                            <td><?php if($d->ips4 == ""){echo "-";}else {echo $d->ips4;}?></td>
                           </tr>
                           <tr>
                             <td>5</td>
-                            <td>B</td>
-                            <td>3.51</td>
+                            <td><?php if($d->ips5 == ""){echo "-";}else {echo $d->ips5;}?></td>
                           </tr>
                         </table>
+                        <?php } ?>
                       </div>
                     </div>
             <!-- /.tab-pane -->
@@ -527,13 +614,10 @@
 <script>
 	var columns = [];
 </script>
-
-
-
 <script>
 	/* jQueryKnob */
 	$('.knob').knob();
 </script>
 <?php
-  $this->load->view('footer');
+  $this->load->view('dosen/footer');
 ?>

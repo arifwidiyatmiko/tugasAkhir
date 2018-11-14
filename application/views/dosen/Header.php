@@ -114,31 +114,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			                <p>
 			                  Alexander Pierce - Web Developer
-			                  <small>Member since Nov. 2012</small>
 			                </p>
 			              </li>
 			              <!-- Menu Body -->
-			              <li class="user-body">
-			                <div class="row">
-			                  <div class="col-xs-4 text-center">
-			                    <a href="#">Followers</a>
-			                  </div>
-			                  <div class="col-xs-4 text-center">
-			                    <a href="#">Sales</a>
-			                  </div>
-			                  <div class="col-xs-4 text-center">
-			                    <a href="#">Friends</a>
-			                  </div>
-			                </div>
-			                <!-- /.row -->
-			              </li>
 			              <!-- Menu Footer-->
 			              <li class="user-footer">
 			                <div class="pull-left">
 			                  <a href="#" class="btn btn-default btn-flat">Profile</a>
 			                </div>
 			                <div class="pull-right">
-			                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+			                  <a href="<?= base_url();?>Auth/outdosen" class="btn btn-default btn-flat">Sign out</a>
 			                </div>
 			              </li>
 			            </ul>
@@ -161,14 +146,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 				<li>
 					<a href="<?=base_url()?>datamahasiswa">
-						<i class="fa fa-home"></i> <span>Mahasiswa</span>
+						<i class="fa fa-folder-open"></i> <span>Mahasiswa</span>
 					</a>
 				</li>
-				<li>
-					<a href="<?=base_url()?>">
-						<i class="fa fa-home"></i> <span>Biodata</span>
-					</a>
-				</li>
+				<li class="active treeview">
+          <a href="#">
+            <i class="fa fa-folder-open"></i> <span>Panitia PKL</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
+          </ul>
+        </li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

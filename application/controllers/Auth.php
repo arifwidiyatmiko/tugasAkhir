@@ -56,7 +56,8 @@ class Auth extends CI_Controller {
 				redirect('Auth/dosen','refresh');
 			}else{
 				if ($this->session->userdata('dosen')) {
-					echo "Arahin ke kontroller Dosen";
+					redirect('dosen','refresh');
+					//echo "";
 				}else{
 					$this->load->view('Login');
 				}
@@ -67,12 +68,19 @@ class Auth extends CI_Controller {
 			if ($result->num_rows() > 0) {
 				$this->session->set_userdata('dosen',$result->result()[0]);
 				$this->session->set_flashdata('info', '<div class="alert alert-info alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <h4><i class="icon fa fa-warning"></i> Alert!</h4> Warning alert preview. This alert is dismissable. </div>');
-				echo "Arahin ke kontroller Dosen";
+				redirect('dosen','refresh');
+				//echo "Arahin ke kontroller Dosen";
 				// redirect('Welcome','refresh');
 			}else{
 				$this->session->set_flashdata('info', '<div class="alert alert-warning alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <h4><i class="icon fa fa-warning"></i> Alert!</h4> Warning alert preview. This alert is dismissable. </div>');
 				redirect('Auth/dosen','refresh');
 			}
 		}
+	}
+	public function outdosen()
+	{
+		$this->session->unset_userdata('dosen');
+		$this->session->set_flashdata('info', '<div class="alert alert-info alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <h4><i class="icon fa fa-warning"></i> Alert!</h4> Warning alert preview. This alert is dismissable. </div>');
+		redirect('Auth/dosen','refresh');
 	}
 }

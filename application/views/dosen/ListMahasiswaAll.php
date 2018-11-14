@@ -1,5 +1,5 @@
 <?php
-  $this->load->view('header');
+  $this->load->view('dosen/Header');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -34,76 +34,44 @@
 			<div class="box-body">
 				<div class="nav-tabs-custom">
 		       <ul class="nav nav-tabs">
-		          <li class="active"><a href="#tab_1" data-toggle="tab">Sebagai Pembimbing</a></li>
-		          <li><a href="#tab_2" data-toggle="tab">Sebagai Penguji</a></li>
-		          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+		          <li class="active"><a href="#tab_1" data-toggle="tab">Semua Data Mahasiswa</a></li>
+		          <!-- <li><a href="#tab_2" data-toggle="tab">Sebagai Penguji</a></li>
+		          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
 		        </ul>
 		     <div class="tab-content">
 		        <div class="tab-pane active" id="tab_1">
               <section class="content">
                 <div class="row">
-                  <table id="example" class="cell-border" style="width:100%">
+                  <table id="tabel" class="cell-border" style="width:100%">
                     <thead>
                       <tr>
                         <th>Nama Mahasiswa</th>
                         <th>NIM</th>
                         <th>Jenis Kelamin</th>
-                        <th>Kajian</th>
-                        <th>Progres</th>
+                        <th>Email</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Samuel</td>
-                        <td>J3D116001</td>
-                        <td>Laki-laki</td>
-                        <td>Perangkat Keras</td>
-                        <td>Seminar Tugas Akhir</td>
-                        <td>
-                          <a href="<?php echo base_url();?>detailmahasiswa">
-                            <button type="button" class="btn btn-primary">
-                              Detail
-                            </button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Jonathan</td>
-                        <td>J3D116002</td>
-                        <td>Laki-laki</td>
-                        <td>-</td>
-                        <td>Pilih Kajian</td>
-                        <td>
-                          <a href="<?php echo base_url();?>">
-                            <button type="button" class="btn btn-primary">
-                              Detail
-                            </button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Irawati</td>
-                        <td>J3D116005</td>
-                        <td>Perempuan</td>
-                        <td>Perangkat Keras</td>
-                        <td>Ujian Tugas Akhir</td>
-                        <td>
-                          <a href="<?php echo base_url();?>">
-                            <button type="button" class="btn btn-primary">
-                              Detail
-                            </button>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
+                    <?php foreach($mhs->result_array() as $i): ?>
+                    <tr>
+                      <td><?php echo $i['namaLengkap']; ?></td>
+                      <td><?php echo $i['nim']; ?></td>
+                      <td><?php echo $i['jenisKelamin']; ?></td>
+                      <td><?php echo $i['email']; ?></td>
+                      <td>
+                        <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $i['nim']; ?>"><button type="button" class="btn btn-primary">Detail Data</button></a>
+                        <a data-id="<?php echo $i['nim']; ?>" data-toggle="modal" data-target="#konfirmHapus" href="javascript;:"> <button type="button" class="btn btn-danger" >Hapus Data</button></a>
+                      </td>
+                    </tr>
+                   <?php endforeach;?>
+                  </tbody>
                     <tfoot>
                       <tr>
-                        <th>Nama</th>
+                        <th>Nama Mahasiswa</th>
                         <th>NIM</th>
                         <th>Jenis Kelamin</th>
-                        <th>Kajian</th>
-                        <th>Progres</th>
+                        <th>Email</th>
                         <th>Aksi</th>
                       </tr>
                     </tfoot>
@@ -114,7 +82,7 @@
               </section>
 		        </div>
 		  <!-- /.tab-pane -->
-		        <div class="tab-pane" id="tab_2">
+		        <!-- <div class="tab-pane" id="tab_2">
 		                The European languages are members of the same family. Their separate existence is a myth.
 		                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
 		                in their grammar, their pronunciation and their most common words. Everyone realizes why a
@@ -122,7 +90,7 @@
 		                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
 		                words. If several languages coalesce, the grammar of the resulting language is more simple
 		                and regular than that of the individual languages.
-		         </div>
+		         </div> -->
 		              <!-- /.tab-pane -->
 		  </div>
 		            <!-- /.tab-content -->
@@ -141,15 +109,13 @@
 </script>
 <script>
   $(document).ready(function() {
-  $('#example').DataTable();
+  $('#tabel').DataTable();
 } );
 </script>
-
-
 <script>
 	/* jQueryKnob */
 	$('.knob').knob();
 </script>
 <?php
-  $this->load->view('footer');
+  $this->load->view('dosen/Footer');
 ?>

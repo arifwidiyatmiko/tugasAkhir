@@ -59,9 +59,14 @@ $route['mahasiswa'] = 'mahasiswa/Dashboard';
 $route['Mahasiswa/biodata'] = 'mahasiswa/Dashboard/biodata';
 $route['mahasiswa/biodata'] = 'mahasiswa/Dashboard/biodata';
 
-//Buat diarahkan ke controller Dosen
+//Buat diarahkan ke controller Dosen Non Panitia
+$route['dosen'] = 'dosen/Dashboard';
+$route['Dosen'] = 'dosen/Dashboard';
 $route['datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
 $route['Datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
+
+//Buat diarahkan ke controller Dosen Panitia
+$route['semuadatamhs'] = 'dosen/Mahasiswa/ListMahasiswaAll';
 
 //Buat diarahkan ke detail mahasiswa
 $route['detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';

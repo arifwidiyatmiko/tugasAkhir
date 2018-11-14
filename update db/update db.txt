@@ -1,0 +1,3 @@
+#tambah field IP semester 1-5
+
+ALTER TABLE `mahasiswa` ADD `ips1` VARCHAR(6) NULL AFTER `email`, ADD `ips2` VARCHAR(6) NULL AFTER `ips1`, ADD `ips3` VARCHAR(6) NULL AFTER `ips2`, ADD `ips4` VARCHAR(6) NULL AFTER `ips3`, ADD `ips5` VARCHAR(6) NULL AFTER `ips4`;

@@ -18,13 +18,28 @@ class Mahasiswa extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 function __construct(){
+
+              parent::__construct();
+
+              $this->load->model('Mahasiswa_model');
+
+        }
 	public function listMahasiswa()
 	{
-		$this->load->view('DListMahasiswa');
+		$this->load->view('dosen/ListMahasiswa');
 	}
 
-  public function detailMahasiswa()
+	public function listMahasiswaAll()
 	{
-		$this->load->view('DDetailMahasiswa');
+		$data['mhs']=$this->Mahasiswa_model->getAll();
+		$this->load->view('dosen/ListMahasiswaAll', $data);
+		//$this->load->view('dosen/ListMahasiswaAll');
+	}
+
+  public function detailMahasiswa($nim)
+	{
+		$data['detailmhs']=$this->Mahasiswa_model->getId($nim)->result();
+		$this->load->view('dosen/DetailMahasiswa',$data);
 	}
 }
