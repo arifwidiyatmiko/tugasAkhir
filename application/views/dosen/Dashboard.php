@@ -1,5 +1,5 @@
 <?php
-  $this->load->view('dosen/Header');
+  // $this->load->view('dosen/Header');
 ?>
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -109,5 +109,5 @@
 	$('.knob').knob();
 </script>
 <?php
-  $this->load->view('Dosen/Footer');
+  // $this->load->view('Dosen/Footer');
 ?>

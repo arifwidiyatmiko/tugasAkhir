@@ -47,6 +47,27 @@ class Welcome extends CI_Controller {
 		$this->load->view('mahasiswa/biodata',$data);
 		$this->load->view('mahasiswa/footer');
 	}
+	public function kajian($value='')
+	{
+		$this->load->view('mahasiswa/header');
+		$this->load->view('mahasiswa/Indeksprestasi');
+		$this->load->view('mahasiswa/footer');
+	}
+	public function submitip($value='')
+	{
+		$data = array(
+				'ips1' =>$this->input->post('ips1'),
+				'ips2' =>$this->input->post('ips2'),
+				'ips3' =>$this->input->post('ips3'),
+				'ips4' =>$this->input->post('ips4'),
+				'ips5' =>$this->input->post('ips5'));
+		$this->Mahasiswa_model->update($this->session->userdata('mahasiswa')->nim,$data);
+		$this->session->set_flashdata('success','<div class="alert alert-success" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  Terima Kasih sudah memperbarui Biodata.
+</div>');
+		redirect('Welcome/biodata');
+	}
 	public function submit()
 	{
 			$data = array(
