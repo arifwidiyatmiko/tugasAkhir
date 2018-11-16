@@ -22,13 +22,19 @@ class Welcome extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		// echo "string";die();
 		if (!$this->session->userdata('mahasiswa')) {
 			redirect('Auth','refresh');
 		}
 		$this->load->model('Mahasiswa_model');
+		// echo $this->session->userdata('mahasiswa')->nim;
 		$data = $this->Mahasiswa_model->getId($this->session->userdata('mahasiswa')->nim);
+
 		$res = $data->result()[0];
+		$res->nim = $this->session->userdata('mahasiswa')->nim;
+		// print_r($data->result());die();
 		$this->session->set_userdata('mahasiswa',$res);
+		// echo "string";die();
 	}
 
 	public function index()
@@ -36,8 +42,17 @@ class Welcome extends CI_Controller {
 		if ($this->session->userdata('mahasiswa')->passwordChanged == 0) {
 			redirect('Welcome/changePass','refresh');
 		}
+		$biodata = $this->Mahasiswa_model->getByWhere(array('nim'=>$this->session->userdata('mahasiswa')->nim))->result()[0];
+		// print_r($biodata);die();
+		if ($biodata->tanggalLahir != NULL && $biodata->tempatLahir != NULL && $biodata->jenisKelamin != NULL && $biodata->jalurMasuk != NULL && $biodata->programStudi != NULL && $biodata->ibuKandung != NULL && $biodata->telepon != NULL && $biodata->NIK != NULL && $biodata->agama != NULL && $biodata->alamatTinggal) {
+			$data['isKajian'] = TRUE;
+		}else{$data['isKajian']=FALSE;}
+		if ($biodata->isConfirm == 0) {
+			$data['isKajian'] = FALSE;
+		}
+
 		$this->load->view('mahasiswa/header');
-		$this->load->view('mahasiswa/index');
+		$this->load->view('mahasiswa/index',$data);
 		$this->load->view('mahasiswa/footer');
 	}
 	public function biodata($value='')

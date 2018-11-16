@@ -45,23 +45,28 @@
                   <div class="col-sm-1"></div>
                   <div class="col-sm-2 form-group">
                      <label for="exampleInputEmail1">IPK Semester 1</label>
-                     <input type="number" class="form-control" id="ips1" name="ips1" value="<?=$this->session->userdata('mahasiswa')->ips1?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return isNumber(event)">
+                     <input type="number" class="form-control" id="ips1" name="ips1" value="<?=$this->session->userdata('mahasiswa')->ips1?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4"  onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ||  
+   event.charCode == 46 || event.charCode == 0 " >
                   </div>
                   <div class="col-sm-2 form-group">
                      <label for="exampleInputEmail1">IPK Semester 2</label>
-                     <input type="text" class="form-control" id="namaLengkap" name="ips2" value="<?=$this->session->userdata('mahasiswa')->ips2?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return isNumber(event)">
+                     <input type="number" class="form-control" id="namaLengkap" name="ips2" value="<?=$this->session->userdata('mahasiswa')->ips2?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ||  
+   event.charCode == 46 || event.charCode == 0 ">
                   </div>
                   <div class="col-sm-2 form-group">
                      <label for="exampleInputEmail1">IPK Semester 3</label>
-                     <input type="text" class="form-control" id="namaLengkap" name="ips3" value="<?=$this->session->userdata('mahasiswa')->ips3?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return isNumber(event)">
+                     <input type="number" class="form-control" id="namaLengkap" name="ips3" value="<?=$this->session->userdata('mahasiswa')->ips3?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ||  
+   event.charCode == 46 || event.charCode == 0 ">
                   </div>
                   <div class="col-sm-2 form-group">
                      <label for="exampleInputEmail1">IPK Semester 4</label>
-                     <input type="text" class="form-control" id="namaLengkap" name="ips4" value="<?=$this->session->userdata('mahasiswa')->ips4?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return isNumber(event)">
+                     <input type="number" class="form-control" id="namaLengkap" name="ips4" value="<?=$this->session->userdata('mahasiswa')->ips4?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ||  
+   event.charCode == 46 || event.charCode == 0 ">
                   </div>
                   <div class="col-sm-2 form-group">
                      <label for="exampleInputEmail1">IPK Semester 5</label>
-                     <input type="text" class="form-control" id="namaLengkap" name="ips5" value="<?=$this->session->userdata('mahasiswa')->ips5?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return isNumber(event)">
+                     <input type="number" class="form-control" id="namaLengkap" name="ips5" value="<?=$this->session->userdata('mahasiswa')->ips5?>" pattern="[0-9]+([,\.][0-9]+)?" placeholder="4.00" step="0.01" min="0" max="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ||  
+   event.charCode == 46 || event.charCode == 0 ">
                   </div>
                   <div class="col-sm-1"></div>  
                </div>

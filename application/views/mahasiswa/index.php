@@ -24,7 +24,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Mengisi Biodata</span>
-              <span class="info-box-number text-yellow">Belum</span>
+              <span class="info-box-number <?php if($isKajian == TRUE){echo "text-green";}else{echo "text-yellow";}?>"><?php if($isKajian == TRUE){echo "Belum";}else{echo "Sudah";}?></span>
             </div>
             
             <!-- /.info-box-content -->
@@ -34,6 +34,8 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
+          <a <?php if($isKajian == TRUE){echo "href=".base_url()."Welcome/kajian/";}?>>
+
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
 
@@ -43,6 +45,7 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+        </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
