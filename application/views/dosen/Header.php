@@ -90,9 +90,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- Logo -->
 		<a href="javascript:void(0);" class="logo button" data-action="home">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
-		      <span class="logo-mini"><b>A</b>LT</span>
+		      <!-- <span class="logo-mini"><b>A</b>LT</span> -->
 		      <!-- logo for regular state and mobile devices -->
-		      <span class="logo-lg"><b>Admin</b>LTE</span>
+		      <span class="logo-lg"><b>PKL TEK</span>
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top">
@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					 <li class="dropdown user user-menu">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			              <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
-			              <span class="hidden-xs">Alexander Pierce</span>
+			              <span class="hidden-xs"><?php echo $this->session->userdata('dosen')->nama?></span>
 			            </a>
 			            <ul class="dropdown-menu">
 			              <!-- User image -->
@@ -149,6 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<i class="fa fa-folder-open"></i> <span>Mahasiswa</span>
 					</a>
 				</li>
+				<?php if($this->session->userdata('dosen')->isAdmin == 1){?>
 				<li class="active treeview">
           <a href="#">
             <i class="fa fa-folder-open"></i> <span>Panitia PKL</span>
@@ -157,10 +158,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
+            <li><a href="<?=base_url()?>bidangkajian"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
+						<li><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
+						<li><a href="<?=base_url()?>semuadatainstansi"><i class="fa fa-circle-o"></i>Data Instansi</a></li>
           </ul>
         </li>
+			<?php } ?>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

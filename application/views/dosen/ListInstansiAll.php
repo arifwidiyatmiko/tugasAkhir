@@ -20,7 +20,7 @@
 		<!-- Default box -->
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">Data Mahasiswa</h3>
+				<h3 class="box-title">Data Instansi</h3>
 				<div class="box-tools pull-right">
 					<button type="button" class="toggle-expand-btn btn btn-box-tool btn-sm">
 						<i class="fa fa-expand"></i>
@@ -34,7 +34,7 @@
 			<div class="box-body">
 				<div class="nav-tabs-custom">
 		       <ul class="nav nav-tabs">
-		          <li class="active"><a href="#tab_1" data-toggle="tab">Semua Data Mahasiswa</a></li>
+		          <li class="active"><a href="#tab_1" data-toggle="tab">Semua Data Instansi</a></li>
 		          <!-- <li><a href="#tab_2" data-toggle="tab">Sebagai Penguji</a></li>
 		          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
 		        </ul>
@@ -45,23 +45,23 @@
                   <table id="tabel" class="cell-border" style="width:100%">
                     <thead>
                       <tr>
-                        <th>Nama Mahasiswa</th>
-                        <th>NIM</th>
-                        <th>Jenis Kelamin</th>
+                        <th>Nama Instansi</th>
+                        <th>Nama Pimpinan</th>
+                        <th>Kota Instansi</th>
                         <th>Email</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($mhs->result_array() as $i): ?>
+                    <?php foreach($instansi->result_array() as $i): ?>
                     <tr>
-                      <td><?php echo $i['namaLengkap']; ?></td>
-                      <td><?php echo $i['nim']; ?></td>
-                      <td><?php echo $i['jenisKelamin']; ?></td>
-                      <td><?php echo $i['email']; ?></td>
+                      <td><?php echo $i['namaInstansi']; ?></td>
+                      <td><?php echo $i['pimpinanInstansi']; ?></td>
+                      <td><?php echo $i['kotaKabInstansi']; ?></td>
+                      <td><?php echo $i['emailInstansi']; ?></td>
                       <td>
-                        <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $i['nim']; ?>"><button type="button" class="btn btn-primary">Detail Data</button></a>
-                        <!-- <a data-id="<?php echo $i['nim']; ?>" data-toggle="modal" data-target="#konfirmHapus" href="javascript;:"> <button type="button" class="btn btn-danger" >Hapus Data</button></a> -->
+                        <a href="<?php echo site_url();?>dosen/Instansi/detailInstansi/<?php echo $i['idInstansi']; ?>"><button type="button" class="btn btn-primary">Detail Data</button></a>
+                        <!-- <a data-id="<?php echo $i['idInstansi']; ?>" data-toggle="modal" data-target="#konfirmHapus" href="javascript;:"> <button type="button" class="btn btn-danger" >Hapus Data</button></a> -->
                       </td>
                     </tr>
                    <?php endforeach;?>

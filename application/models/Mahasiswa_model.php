@@ -21,8 +21,12 @@ class Mahasiswa_model extends CI_model {
 	}
 	public function getId($id)
 	{
-		$this->db->where('nim',$id);
-		return $this->db->get('mahasiswa');
+		$this->db->select('*');
+    $this->db->from('bidangkajian');
+    $this->db->join('mahasiswa', 'bidangkajian.nim = mahasiswa.nim');
+    $this->db->join('instansi', 'bidangkajian.idInstansi = instansi.idInstansi');
+		$this->db->where('mahasiswa.nim',$id);
+		return $this->db->get();
 	}
 	public function insert($value)
 	{

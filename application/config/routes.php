@@ -66,7 +66,9 @@ $route['datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
 $route['Datamahasiswa'] = 'dosen/Mahasiswa/listMahasiswa';
 
 //Buat diarahkan ke controller Dosen Panitia
-$route['semuadatamhs'] = 'dosen/Mahasiswa/ListMahasiswaAll';
+$route['semuadatamhs'] = 'dosen/Mahasiswa/listMahasiswaAll';
+$route['semuadatainstansi'] = 'dosen/Instansi/listInstansiAll';
+$route['bidangkajian'] = 'dosen/BidangKajian/listData';
 
 //Buat diarahkan ke detail mahasiswa
 $route['detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';

@@ -78,8 +78,8 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	// Ilangin Komen dibawah Buat lu Ply
-	// 'password' => '',
-	'password' => 'password',
+	'password' => '',
+	//'password' => 'password',
 	'database' => 'tugasAkhir',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
