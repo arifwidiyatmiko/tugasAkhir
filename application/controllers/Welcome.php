@@ -27,6 +27,8 @@ class Welcome extends CI_Controller {
 			redirect('Auth','refresh');
 		}
 		$this->load->model('Mahasiswa_model');
+		$this->load->model('Kajian_model');
+		$this->load->model('Instansi_model');
 		// echo $this->session->userdata('mahasiswa')->nim;
 		$data = $this->Mahasiswa_model->getId($this->session->userdata('mahasiswa')->nim);
 
@@ -64,8 +66,10 @@ class Welcome extends CI_Controller {
 	}
 	public function kajian($value='')
 	{
+		$data['kajian'] = $this->Kajian_model->getWhere(array('kode' =>substr($this->session->userdata('mahasiswa')->nim, 2,1) ));
+		$data['instansi'] = $this->Instansi_model->getAll();
 		$this->load->view('mahasiswa/header');
-		$this->load->view('mahasiswa/Indeksprestasi');
+		$this->load->view('mahasiswa/Indeksprestasi',$data);
 		$this->load->view('mahasiswa/footer');
 	}
 	public function submitip($value='')

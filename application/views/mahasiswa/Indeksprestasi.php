@@ -90,20 +90,52 @@
        
          <!-- /.box-header -->
          <div class="box-body">
-            <form action="<?=base_url()?>/Welcome/submitip" method="POST">
+            <form action="<?=base_url()?>/Welcome/submitkajian" method="POST" enctype="multipart/form-data">
                <div class="row">
                    
                   <div class="col-sm-4 form-group">
                      <label>Pilih Bidang Kajian</label>
-                     <select name="" class="form-control"></select>
+                     <select name="" class="form-control">
+                        <option>-- Pilih --</option>
+                        <?php 
+                        foreach ($kajian->result() as $key) {
+                           ?><option value="<?=$key->idKajian?>"><?=$key->namaKajian?></option><?php
+                        }
+                        ?>
+                     </select>
                   </div>
                   <div class="col-sm-4 form-group">
                      <label>Nama Instansi/Perusahaan</label>
-                     <input type="text" name="" class="form-control">
+                     <input type="text" name="namaInstansi" id="namaInstansi" class="form-control" style="text-transform:uppercase">
                   </div>
                   <div class="col-sm-4 form-group">
-                     <label>Nama Pembimbing Lapang</label>
-                     <input type="text" name="" class="form-control">
+                     <label>Nama Pimpinan Instansi</label>
+                     <input type="text" name="pimpinanInstansi" id="pimpinanInstansi" class="form-control" style="text-transform:uppercase">
+                  </div>
+               </div>
+               <div class="row">
+                   
+                  <div class="col-sm-3 form-group">
+                     <label>Kota Instansi/Perusahaan</label>
+                     <input type="text" name="kotaKabInstansi" id="kotaKabInstansi" class="form-control" style="text-transform:uppercase">
+                  </div>
+                  <div class="col-sm-3 form-group">
+                     <label>Email Instansi/Perusahaan</label>
+                     <input type="text" name="emailInstansi" id="emailInstansi" class="form-control" style="text-transform:uppercase">
+                  </div>
+                  <div class="col-sm-3 form-group">
+                     <label>Kode POS Instansi/Perusahaan</label>
+                     <input type="text" name="posInstansi" id="posInstansi" class="form-control" style="text-transform:uppercase">
+                  </div>
+                  <div class="col-sm-3 form-group">
+                     <label>Nomor Telepon Instansi/Perusahaan</label>
+                     <input type="number" name="kontakInstansi" id="kontakInstansi" class="form-control" style="text-transform:uppercase">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-sm-12 form-group">
+                     <label>Upload Surat Balasan</label>
+                     <input type="file" name="" class="form-control" style="text-transform:uppercase">
                   </div>
                </div>
                
@@ -118,7 +150,16 @@
 </div>
 <!-- /.content-wrapper -->
 <script>
-   var columns = [];
-</script>
+  $( function() {
+    var availableTags = <?=json_encode($instansi->result())?>;
+    var data = _.map(availableTags, 'namaInstansi');
+    $( "#namaInstansi" ).autocomplete({
+      source: data,
+      change: function( event, ui ) {
+        console.log(ui);
+      }
+    });
+  } );
+  </script>
 <script>
 </script>

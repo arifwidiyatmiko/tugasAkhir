@@ -24,7 +24,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Mengisi Biodata</span>
-              <span class="info-box-number <?php if($isKajian == TRUE){echo "text-green";}else{echo "text-yellow";}?>"><?php if($isKajian == TRUE){echo "Belum";}else{echo "Sudah";}?></span>
+              <span class="info-box-number <?php if($isKajian == TRUE){echo "text-green";}else{echo "text-yellow";}?>"><?php if($isKajian == TRUE){echo "Sudah";}else{echo "Belum";}?></span>
             </div>
             
             <!-- /.info-box-content -->

@@ -26,7 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/styles/skins/_all-skins.min.css">
-
+	<link rel="stylesheet" href="<?= base_url();?>assets/styles/tugas.css">
+	<link rel="stylesheet" href="<?= base_url();?>assets/styles/style.css">
 	<link rel="stylesheet" href="<?= base_url();?>assets/styles/loading.css">
 
 	<style>
@@ -64,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 	<!-- LEAFLET -->
 	  <script src="<?php echo base_url();?>assets/jQuery/jquery-1-11-1.min.js"></script>
-	  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+	  <script type="text/javascript" src="<?php echo base_url();?>assets/scripts/lodash.min.js"></script>
 	  <script src="<?= base_url()?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -103,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<![endif]-->
 
 	<!-- Google Font -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<link rel="stylesheet" href="<?= base_url();?>assets/styles/css.css">
 </head>
 <body class="hold-transition skin-black-light sidebar-mini">
 
@@ -173,13 +174,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 				</li>
 				<li>
-					<a href="<?=base_url()?>">
-						<i class="fa fa-home"></i> <span>Mahasiswa</span>
-					</a>
-				</li>
-				<li>
-					<a href="<?=base_url()?>">
-						<i class="fa fa-home"></i> <span>Biodata</span>
+					<a href="">
+						<i class="fa fa-link"></i> <span>Tata Cara</span>
 					</a>
 				</li>
 			</ul>
