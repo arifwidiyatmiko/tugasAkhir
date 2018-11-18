@@ -13,4 +13,11 @@ class Kajian_model extends CI_model {
 	{
 	    return $this->db->get('kajian');
 	}
+	public function getKajianProgramstudi($kode)
+	{
+		$this->db->select('*');
+		$this->db->join('kajian_programStudi', 'kajian_programStudi.idKajian = kajian.idKajian', 'INNER');
+		$this->db->where('kajian_programStudi.idProgramStudi', $kode);
+		return $this->db->get('kajian');
+	}
 }

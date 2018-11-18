@@ -10,3 +10,5 @@ public function submit()
 		$this->template->submit($data);
 		echo json_encode($data);
 	}
+
+ALTER TABLE `bidangkajian` CHANGE `kajian` `idKajian` INT(11) NOT NULL;

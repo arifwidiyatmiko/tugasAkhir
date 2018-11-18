@@ -29,6 +29,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('Mahasiswa_model');
 		$this->load->model('Kajian_model');
 		$this->load->model('Instansi_model');
+		$this->load->model('BidangKajian_model');
 		// echo $this->session->userdata('mahasiswa')->nim;
 		$data = $this->Mahasiswa_model->getId($this->session->userdata('mahasiswa')->nim);
 
@@ -66,8 +67,11 @@ class Welcome extends CI_Controller {
 	}
 	public function kajian($value='')
 	{
-		$data['kajian'] = $this->Kajian_model->getWhere(array('kode' =>substr($this->session->userdata('mahasiswa')->nim, 2,1) ));
+		$data['kajian'] = $this->Kajian_model->getKajianProgramstudi(substr($this->session->userdata('mahasiswa')->nim, 2,1));
+		// print_r($data);die();
 		$data['instansi'] = $this->Instansi_model->getAll();
+		$data['bidKajian'] = $this->BidangKajian_model->getNim($this->session->userdata('mahasiswa')->nim);
+		// print_r($data['bidKajian']->result());die();
 		$this->load->view('mahasiswa/header');
 		$this->load->view('mahasiswa/Indeksprestasi',$data);
 		$this->load->view('mahasiswa/footer');
@@ -86,6 +90,53 @@ class Welcome extends CI_Controller {
   Terima Kasih sudah memperbarui Biodata.
 </div>');
 		redirect('Welcome/biodata');
+	}
+	public function submitkajian($value='')
+	{
+		$data = array('idKajian' => $this->input->post('kajian'),'nim'=>$this->session->userdata('mahasiswa')->nim,'statusKajian'=>0);
+		$where = array('namaInstansi'=>$this->input->post('namaInstansi'),'pimpinanInstansi'=>$this->input->post('pimpinanInstansi'),'kontakInstansi'=>$this->input->post('kontakInstansi'),'posInstansi'=>$this->input->post('posInstansi'),'emailInstansi'=>$this->input->post('emailInstansi'),'alamatInstansi'=>$this->input->post('alamatInstansi'),'kotaKabInstansi'=>$this->input->post('kotaKabInstansi'));
+		
+		$res = $this->Instansi_model->getLikeWhere($where);
+		// print_r($res->result());die();
+		if ($res->num_rows() > 0) {
+
+			$data['idInstansi'] = $res->result()[0]->idInstansi;
+		}else{
+			$data['idInstansi'] = $this->Instansi_model->insert($where);
+		}
+		$data['suratBalasanInst'] = $this->UploadFile($_FILES['suratBalasan'],'suratBalasan');
+		// print_r($data);die();
+		if ($this->BidangKajian_model->getNim($this->session->userdata('mahasiswa')->nim)->num_rows() != 0) {
+			// echo "string";die();
+			$this->BidangKajian_model->update($this->session->userdata('mahasiswa')->nim,$data);
+		}else{
+			// echo "sd";die();
+			$this->BidangKajian_model->insert($data);
+		}
+		redirect('Welcome/kajian','refresh');
+		
+	}
+	public function UploadFile($image,$name)
+	{
+		if ($image['size'] > 0) {
+			// echo "string";die();
+			$file_name = 'SB1_'.$this->session->userdata('mahasiswa')->nim.'_';
+			$config['upload_path']   = './assets/filemahasiswa/SB/'; 
+	        $config['allowed_types'] = 'pdf|PDF'; 
+	        $config['max_size']      = 512000;
+	        $config['file_name'] = $file_name;
+	        $this->upload->initialize($config);
+         	if ($this->upload->do_upload($name))
+            {
+            	$img = $this->upload->data();
+            	return $img['file_name'];
+            }else{
+            	echo $this->upload->display_errors('<p>', '</p>');
+            }
+            //redirect('Foto');
+         }else{
+         	echo "";
+         }
 	}
 	public function submit()
 	{

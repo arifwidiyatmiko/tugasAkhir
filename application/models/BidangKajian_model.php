@@ -12,6 +12,10 @@ class BidangKajian_model extends CI_model {
 		$this->db->where('nim', $id);
 		$this->db->update('bidangkajian', $data);
 	}
+	public function insert($data)
+	{
+		$this->db->insert('bidangkajian', $data);
+	}
 	public function getAll($value='')
 	{
     $this->db->select('*');
@@ -20,5 +24,10 @@ class BidangKajian_model extends CI_model {
     $this->db->join('instansi', 'bidangkajian.idInstansi = instansi.idInstansi');
     $query = $this->db->get();
 		return $query;
+	}
+	public function getNim($nim)
+	{
+		$this->db->where('nim', $nim);
+		return $this->db->get('bidangkajian');
 	}
 }

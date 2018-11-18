@@ -95,47 +95,61 @@
                    
                   <div class="col-sm-4 form-group">
                      <label>Pilih Bidang Kajian</label>
-                     <select name="" class="form-control">
+                     <select name="kajian" class="form-control">
                         <option>-- Pilih --</option>
-                        <?php 
-                        foreach ($kajian->result() as $key) {
-                           ?><option value="<?=$key->idKajian?>"><?=$key->namaKajian?></option><?php
+                        <?php
+                        if ($bidKajian->num_rows() != 0) {
+                          foreach ($kajian->result() as $key) {
+                             ?><option value="<?=$key->idKajian?>" <?php if($bidKajian->result()[0]->idKajian == $key->idKajian){echo "selected";}?>><?=$key->namaKajian?></option><?php
+                          }
+                        }else{
+                          foreach ($kajian->result() as $key) {
+                             ?><option value="<?=$key->idKajian?>"><?=$key->namaKajian?></option><?php
+                          }
                         }
+                        ?>
+                        <?php 
+                        
                         ?>
                      </select>
                   </div>
                   <div class="col-sm-4 form-group">
                      <label>Nama Instansi/Perusahaan</label>
-                     <input type="text" name="namaInstansi" id="namaInstansi" class="form-control" style="text-transform:uppercase">
+                     <input type="text" name="namaInstansi" id="namaInstansi" class="form-control" style="text-transform:uppercase" required> 
                   </div>
                   <div class="col-sm-4 form-group">
                      <label>Nama Pimpinan Instansi</label>
-                     <input type="text" name="pimpinanInstansi" id="pimpinanInstansi" class="form-control" style="text-transform:uppercase">
+                     <input type="text" name="pimpinanInstansi" id="pimpinanInstansi" class="form-control" style="text-transform:uppercase" required>
                   </div>
                </div>
                <div class="row">
                    
                   <div class="col-sm-3 form-group">
                      <label>Kota Instansi/Perusahaan</label>
-                     <input type="text" name="kotaKabInstansi" id="kotaKabInstansi" class="form-control" style="text-transform:uppercase">
+                     <input type="text" name="kotaKabInstansi" id="kotaKabInstansi" class="form-control" style="text-transform:uppercase" required>
                   </div>
                   <div class="col-sm-3 form-group">
                      <label>Email Instansi/Perusahaan</label>
-                     <input type="text" name="emailInstansi" id="emailInstansi" class="form-control" style="text-transform:uppercase">
+                     <input type="text" name="emailInstansi" id="emailInstansi" class="form-control" style="text-transform:uppercase" required>
                   </div>
                   <div class="col-sm-3 form-group">
                      <label>Kode POS Instansi/Perusahaan</label>
-                     <input type="text" name="posInstansi" id="posInstansi" class="form-control" style="text-transform:uppercase">
+                     <input type="text" name="posInstansi" id="posInstansi" class="form-control" style="text-transform:uppercase" required>
                   </div>
                   <div class="col-sm-3 form-group">
                      <label>Nomor Telepon Instansi/Perusahaan</label>
-                     <input type="number" name="kontakInstansi" id="kontakInstansi" class="form-control" style="text-transform:uppercase">
+                     <input type="number" name="kontakInstansi" id="kontakInstansi"  class="form-control" style="text-transform:uppercase" required>
                   </div>
                </div>
                <div class="row">
-                  <div class="col-sm-12 form-group">
+                  <div class="col-sm-6 form-group">
+                    <?php 
+                    if($bidKajian->result()[0]->suratBalasanInst != '' && strlen($bidKajian->result()[0]->suratBalasanInst)>=10){
+                      ?><label><a target="new" href="<?=base_url();?>assets/filemahasiswa/SB/<?=$bidKajian->result()[0]->suratBalasanInst;?>">Unduh</a></label><br/><?php
+                    }
+                    ?>
                      <label>Upload Surat Balasan</label>
-                     <input type="file" name="" class="form-control" style="text-transform:uppercase">
+                     <input type="file" name="suratBalasan" id="suratBalasan" class="form-control" onchange="uploadFile()" style="text-transform:uppercase">
                   </div>
                </div>
                
@@ -153,13 +167,52 @@
   $( function() {
     var availableTags = <?=json_encode($instansi->result())?>;
     var data = _.map(availableTags, 'namaInstansi');
+    var bidKajian = <?=json_encode($bidKajian->result())?>;
+    if (bidKajian.length != 0) {
+      var selected = _.find(availableTags, { 'idInstansi': bidKajian[0].idInstansi});
+        // console.log('select ',selected)
+        $('#pimpinanInstansi').val(selected.pimpinanInstansi);
+        $('#kontakInstansi').val(selected.kontakInstansi);
+        $('#posInstansi').val(selected.posInstansi);
+        $('#emailInstansi').val(selected.emailInstansi);
+        $('#kotaKabInstansi').val(selected.kotaKabInstansi);
+        $('#namaInstansi').val(selected.namaInstansi);
+         // $('#kontakInstansi').val(selected.namaInstansi);
+    }
     $( "#namaInstansi" ).autocomplete({
       source: data,
-      change: function( event, ui ) {
-        console.log(ui);
+      // change: function( event, ui ) {
+      //   console.log('change ',ui);
+      // },
+      // close: function( event, ui ) {
+      //   console.log('close ',ui);
+      // },
+      // response: function( event, ui ) {
+      //   console.log('response ',ui);
+      // },
+      select: function( event, ui ) {
+        // console.log('select ',ui);
+        var selected = _.find(availableTags, { 'namaInstansi': ui.item.label});
+        // console.log('select ',selected)
+        $('#pimpinanInstansi').val(selected.pimpinanInstansi);
+        $('#kontakInstansi').val(selected.kontakInstansi);
+        $('#posInstansi').val(selected.posInstansi);
+        $('#emailInstansi').val(selected.emailInstansi);
+        $('#kotaKabInstansi').val(selected.kotaKabInstansi);
       }
     });
-  } );
+      } );
+  function uploadFile() {
+      var file_data = $('#suratBalasan').prop('files')[0]; 
+      console.log(file_data);  
+      if (file_data.size > (1024*100*5)) {
+        alert('Upload PDF Scan Surat Balasan Instansi/Perusahaan Maksimal 500 KB');$('#suratBalasan').val('');return false;
+      }
+      if (file_data.type > 'application/pdf') {
+        alert('Format File Harus  PDF.');$('#suratBalasan').val('');return false;
+      }
+    }
+
   </script>
 <script>
 </script>
