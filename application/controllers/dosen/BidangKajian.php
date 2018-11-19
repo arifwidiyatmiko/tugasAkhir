@@ -24,6 +24,7 @@ class BidangKajian extends CI_Controller {
 
               $this->load->model('BidangKajian_model');
               $this->load->model('Kajian_model');
+              $this->load->model('ProgramStudi_model');
 
         }
 	public function listData()
@@ -71,10 +72,24 @@ class BidangKajian extends CI_Controller {
 	public function kajian($value='',$id='')
 	{
 		switch ($value) {
-			case 'value':
-				# code...
+			case 'add':
+				$data = array('namaKajian'=>strtoupper($this->input->post('namaKajian')));
+				$idKajian = $this->Kajian_model->insert($data);
+				$res = [];
+				// print_r($this->input->post('idProgramStudi'));die();	
+				foreach ($this->input->post('idProgramStudi') as $key => $value) {
+					$res['idKajian'] = $idKajian;
+					$res['idProgramStudi'] = $value;
+					// print_r($res);die();
+					$this->Kajian_model->insert_kajian($res);
+				}
+				redirect('dosen/BidangKajian/kajian','refresh');
 				break;
-			
+			case 'delete':
+				$this->Kajian_model->delete($id);
+				$this->Kajian_model->delete_kajian($id);
+				redirect('dosen/BidangKajian/kajian','refresh');
+				break;
 			default:
 				$res = $this->Kajian_model->getAll();
 				$data['kajian'] =[];
@@ -88,7 +103,7 @@ class BidangKajian extends CI_Controller {
 					$key['kode'] = $mm;
 					array_push($data['kajian'], $key);
 				}
-				// print_r($data['kajian']);die();
+				$data['programStudi'] = $this->ProgramStudi_model->getAll();
 				$this->load->view('dosen/Header');
 				$this->load->view('dosen/Kajian', $data);
 				$this->load->view('dosen/Footer');

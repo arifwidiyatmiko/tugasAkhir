@@ -13,6 +13,27 @@ class Kajian_model extends CI_model {
 	{
 	    return $this->db->get('kajian');
 	}
+	public function insert($data)
+	{
+		$this->db->insert('kajian', $data);
+		$id = $this->db->insert_id();
+		return $id;
+	}
+	public function delete($id)
+	{
+		$this->db->where('idKajian', $id);
+		$this->db->delete('kajian');
+	}
+	public function delete_kajian($value='')
+	{
+		$this->db->where('idKajian', $id);
+		$this->db->delete('kajian_programStudi');
+
+	}
+	public function insert_kajian($data)
+	{
+		$this->db->insert('kajian_programStudi', $data);
+	}
 	public function getKajianProgramstudi($kode)
 	{
 		$this->db->select('*');

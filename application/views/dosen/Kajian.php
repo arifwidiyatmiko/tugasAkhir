@@ -20,6 +20,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Data Kajian</h3>
                 <div class="box-tools pull-right">
+                    <button class="pull-right btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Tambah</button>
                     <button type="button" class="toggle-expand-btn btn btn-box-tool btn-sm">
                         <i class="fa fa-expand"></i>
                     </button>
@@ -38,7 +39,9 @@
                 </ul>
              <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
+
               <section class="content">
+
                 <div class="row">
                   <table id="tabel" class="table table-hover" style="width:100%">
                     <thead>
@@ -54,7 +57,8 @@
                       <td><?php echo $i['namaKajian']; ?></td>
                       <td><?php echo implode(",", $i['kode']);?></td>
                       <td>
-                        <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $i['idKajian']; ?>"><button type="button" class="btn btn-primary">Detail Data</button></a>
+                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#editModal" data-href="<?=base_url()?>dosen/BidangKajian/kajian/delete/<?= $i['idKajian']?>" data-name="<?= $i['namaKajian']?>">Ubah</button>
+                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" data-href="<?=base_url()?>dosen/BidangKajian/kajian/delete/<?= $i['idKajian']?>" data-name="<?= $i['namaKajian']?>">Hapus</button>
                       </td>
                     </tr>
                    <?php endforeach;?>
@@ -101,9 +105,76 @@
 <script>
   $(document).ready(function() {
   $('#tabel').DataTable();
+  $('#idProgramStudi').select2();
+  $('#deleteModal').on('show.bs.modal', function(e) {
+                alert($(e.relatedTarget).data('href'));
+                // $('#form-edit').attr('action', $(e.relatedTarget).data('href'));
+                $('#hrefKajian_m').prop('href', $(e.relatedTarget).data('href'));
+                $('#namaKajian_m').text($(e.relatedTarget).data('name'));
+                // $('#form-edit').attr('action', $(e.relatedTarget).data('id'));
+            });
 } );
 </script>
 <script>
     /* jQueryKnob */
     $('.knob').knob();
 </script>
+<!-- Modal -->
+<div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Hapus Kajian</h4>
+      </div>
+      <div class="modal-body">
+        <span>Hapus Kajian dengan nama : <span id="namaKajian_m"></span> </span>
+      </div>
+      <div class="modal-footer">
+        <a id="hrefKajian_m" class="btn btn-danger">Hapus</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Tambah Kajian</h4>
+      </div>
+      <div class="modal-body">
+        <form action="<?=base_url()?>dosen/BidangKajian/kajian/add" method="POST">
+            <div class="form-group" >
+                <label>Nama Kajian</label>
+                <input type="text" name="namaKajian" id="namaKajian" class="form-control">
+            </div>
+            <div class="form-group">
+                <select name="idProgramStudi[]" id="idProgramStudi" class="form-control" multiple >
+                    <?php
+                    foreach($programStudi->result() as $key){
+                        ?>
+                        <option value="<?=$key->idProgramstudi?>"><?=$key->namaProgramstudi?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+
+  </div>
+</div>  
