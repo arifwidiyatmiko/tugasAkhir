@@ -37,7 +37,7 @@
          </div>
          <!-- /.box-header -->
          <div class="box-body">
-            <form action="<?=base_url()?>/Welcome/submit" method="POST">
+            <form action="<?=base_url()?>/Welcome/submit" method="POST" enctype="multipart/form-data">
                <div class="form-group">
                   <label for="exampleInputEmail1">Nama Lengkap</label>
                   <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" value="<?=$this->session->userdata('mahasiswa')->namaLengkap?>" placeholder="Nama Lengkap">
@@ -122,18 +122,8 @@
                </div>
                <div class="row">
                   <div class="col-sm-6 form-group">
-                     <label for="exampleInputEmail1">Program Studi</label>
-                     <select name="programStudi" id="programStudi" class="form-control" required>
-                        <option disabled>-- Pilih --</option>
-                        <?php 
-                           // print_r($pk);
-                           foreach ($pk as $key=>$value) {
-                           	?>
-                        <option value="<?php echo $value;?>" <?php if($this->session->userdata('mahasiswa')->programStudi ==$value){echo "selected";}?>><?php echo $value;?></option>
-                        <?php
-                           }
-                           ?>
-                     </select>
+                     <label for="exampleInputEmail1">Unggah Pas Foto (Ukuran 3x4, Maksimal 200 Kb, Format JPG)</label>
+                     <input type="file" name="pasFoto" id="pasFoto" class="form-control" onchange="uploadFile()" required>
                   </div>
                   <div class="col-sm-6 form-group">
                      <label for="exampleInputEmail1">Alamat Email</label>
@@ -285,8 +275,16 @@
    var columns = [];
 </script>
 <script>
-   /* jQueryKnob */
-   // $('.knob').knob();
+   function uploadFile() {
+      var file_data = $('#pasFoto').prop('files')[0]; 
+      // console.log(file_data);  
+      if (file_data.size > (1024*100*2)) {
+        alert('Unggah Pas Foto Maksimal 200 KB');$('#pasFoto').val('');return false;
+      }
+      if (file_data.type > 'image/jpeg') {
+        alert('Format File Harus  JPG.');$('#pasFoto').val('');return false;
+      }
+   }
    $('#tanggalLahir').datepicker({
    		    format: "dd/mm/yyyy",
    		    language: "id",

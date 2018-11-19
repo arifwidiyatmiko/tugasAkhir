@@ -138,6 +138,28 @@ class Welcome extends CI_Controller {
          	echo "";
          }
 	}
+	public function UploadImage($image,$name)
+	{
+		if ($image['size'] > 0) {
+			// echo "string";die();
+			$file_name = 'PF_'.$this->session->userdata('mahasiswa')->nim.'_';
+			$config['upload_path']   = './assets/filemahasiswa/pasfoto/'; 
+	        $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG'; 
+	        $config['max_size']      = 204800;
+	        $config['file_name'] = $file_name;
+	        $this->upload->initialize($config);
+         	if ($this->upload->do_upload($name))
+            {
+            	$img = $this->upload->data();
+            	return $img['file_name'];
+            }else{
+            	echo $this->upload->display_errors('<p>', '</p>');
+            }
+            //redirect('Foto');
+         }else{
+         	echo "";
+         }
+	}
 	public function submit()
 	{
 			$data = array(
@@ -150,7 +172,7 @@ class Welcome extends CI_Controller {
 			'ibuKandung' => strtoupper($this->input->post('ibuKandung')), 
 // 			'tanggalMasuk' => date("Y-m-d",strtotime($this->input->post('tanggalMasuk'))), 
 			'tanggalMasuk' => substr($this->input->post('tanggalMasuk'),6,4)."-".substr($this->input->post('tanggalMasuk'),3,2)."-".substr($this->input->post('tanggalMasuk'),0,2),
-			'programStudi' => $this->input->post('programStudi'), 
+			// 'programStudi' => $this->input->post('programStudi'), 
 			'batasStudi' => '2023', 
 			'tinggi' => $this->input->post('tinggi'), 
 			'berat' => $this->input->post('berat'), 
@@ -180,6 +202,8 @@ class Welcome extends CI_Controller {
 			'email'=>$this->input->post('email'),
 			'isConfirm'=>1 
 		);
+		$data['pasFoto'] = $this->UploadImage($_FILES['pasFoto'],'pasFoto');
+
 // 		echo json_encode($data);die();
 		$this->Mahasiswa_model->update($this->session->userdata('mahasiswa')->nim,$data);
 		$this->session->set_flashdata('success','<div class="alert alert-success" role="alert">
