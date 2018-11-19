@@ -23,6 +23,7 @@ class BidangKajian extends CI_Controller {
               parent::__construct();
 
               $this->load->model('BidangKajian_model');
+              $this->load->model('Kajian_model');
 
         }
 	public function listData()
@@ -66,5 +67,32 @@ class BidangKajian extends CI_Controller {
     	$data   = file_get_contents('localhost/tugasAkhir/assets/fileMahasiswa');
 		$name   = '1.pdf';
 		force_download($name, $data);
+	}
+	public function kajian($value='',$id='')
+	{
+		switch ($value) {
+			case 'value':
+				# code...
+				break;
+			
+			default:
+				$res = $this->Kajian_model->getAll();
+				$data['kajian'] =[];
+				foreach ($res->result_array() as $key) {
+					$hsl = $this->Kajian_model->getProgramStudi($key['idKajian'])->result_array();
+					$mm = [];
+					foreach ($hsl as $nn) {
+						$mm[] = $nn['namaProgramstudi'];
+						// array_push($key['kode'], $nn['namaProgramstudi']);
+					}
+					$key['kode'] = $mm;
+					array_push($data['kajian'], $key);
+				}
+				// print_r($data['kajian']);die();
+				$this->load->view('dosen/Header');
+				$this->load->view('dosen/Kajian', $data);
+				$this->load->view('dosen/Footer');
+				break;
+		}
 	}
 }

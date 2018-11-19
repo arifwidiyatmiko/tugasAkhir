@@ -161,6 +161,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="<?=base_url()?>bidangkajian"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
 						<li><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
 						<li><a href="<?=base_url()?>semuadatainstansi"><i class="fa fa-circle-o"></i>Data Instansi</a></li>
+						<li><a href="<?=base_url()?>dosen/BidangKajian/kajian"><i class="fa fa-circle-o"></i>Data Kajian</a></li>
           </ul>
         </li>
 			<?php } ?>
