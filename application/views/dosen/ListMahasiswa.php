@@ -20,7 +20,7 @@
 		<!-- Default box -->
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">Tentang Aplikasi</h3>
+				<h3 class="box-title">Daftar Mahasiswa</h3>
 				<div class="box-tools pull-right">
 					<button type="button" class="toggle-expand-btn btn btn-box-tool btn-sm">
 						<i class="fa fa-expand"></i>
@@ -49,61 +49,39 @@
                         <th>NIM</th>
                         <th>Jenis Kelamin</th>
                         <th>Kajian</th>
-                        <th>Progres</th>
+                        <th>Instansi PKL</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
+                      <?php foreach($mhsbimbing->result_array() as $m): ?>
                       <tr>
-                        <td>Samuel</td>
-                        <td>J3D116001</td>
-                        <td>Laki-laki</td>
-                        <td>Perangkat Keras</td>
-                        <td>Seminar Tugas Akhir</td>
+                        <td><?php echo $m['namaLengkap']; ?></td>
+                        <td><?php echo $m['nim']; ?></td>
+                        <td><?php echo $m['jenisKelamin']; ?></td>
+                        <td><?php echo $m['namaKajian']; ?></td>
                         <td>
-                          <a href="<?php echo base_url();?>detailmahasiswa">
+                          <a href="<?php echo site_url();?>dosen/Instansi/detailInstansi/<?php echo $m['idInstansi']; ?>">
+                              <?php echo $m['namaInstansi']; ?>
+                          </a>
+                        </td>
+                        <td>
+                          <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $m['nim']; ?>">
                             <button type="button" class="btn btn-primary">
-                              Detail
+                              Detail Data
                             </button>
                           </a>
                         </td>
                       </tr>
-                      <tr>
-                        <td>Jonathan</td>
-                        <td>J3D116002</td>
-                        <td>Laki-laki</td>
-                        <td>-</td>
-                        <td>Pilih Kajian</td>
-                        <td>
-                          <a href="<?php echo base_url();?>">
-                            <button type="button" class="btn btn-primary">
-                              Detail
-                            </button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Irawati</td>
-                        <td>J3D116005</td>
-                        <td>Perempuan</td>
-                        <td>Perangkat Keras</td>
-                        <td>Ujian Tugas Akhir</td>
-                        <td>
-                          <a href="<?php echo base_url();?>">
-                            <button type="button" class="btn btn-primary">
-                              Detail
-                            </button>
-                          </a>
-                        </td>
-                      </tr>
+                    <?php endforeach; ?>
                     </tbody>
                     <tfoot>
                       <tr>
-                        <th>Nama</th>
+                        <th>Nama Mahasiswa</th>
                         <th>NIM</th>
                         <th>Jenis Kelamin</th>
                         <th>Kajian</th>
-                        <th>Progres</th>
+                        <th>Instansi PKL</th>
                         <th>Aksi</th>
                       </tr>
                     </tfoot>

@@ -27,7 +27,9 @@ class Mahasiswa extends CI_Controller {
         }
 	public function listMahasiswa()
 	{
-		$this->load->view('dosen/ListMahasiswa');
+		$idDospem = $this->session->userdata('dosen')->id;
+		$data['mhsbimbing']=$this->Mahasiswa_model->getIdDospem($idDospem);
+		$this->load->view('dosen/ListMahasiswa', $data);
 	}
 
 	public function listMahasiswaAll()
@@ -35,6 +37,34 @@ class Mahasiswa extends CI_Controller {
 		$data['mhs']=$this->Mahasiswa_model->getAll();
 		$this->load->view('dosen/ListMahasiswaAll', $data);
 		//$this->load->view('dosen/ListMahasiswaAll');
+	}
+	public function tambahDataMahasiswa()
+	{
+		$this->load->view('dosen/FormTambahMahasiswa');
+		//$this->load->view('dosen/ListMahasiswaAll');
+	}
+
+	public function simpanTambahMahasiswa()
+	{
+		$nim = $this->input->post('nim');
+		$nama = $this->input->post('namaLengkap');
+		$batasStudi = $this->input->post('batasStudi');
+		$tinggi = $this->input->post('tinggi');
+		$berat = $this->input->post('berat');
+		$kewarganegaraan = $this->input->post('kewarganegaraan');
+
+
+		$data = array(
+			'nim' => $nim,
+			'password' => md5('12345'),
+			'namaLengkap' => $nama,
+			'batasStudi' => $batasStudi,
+			'tinggi' => $tinggi,
+			'berat' => $berat,
+			'kewarganegaraan' => $kewarganegaraan
+			);
+		$this->Mahasiswa_model->insert($data);
+		redirect('dosen/Mahasiswa/listMahasiswaAll');
 	}
 
   public function detailMahasiswa($nim)

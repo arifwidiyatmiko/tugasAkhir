@@ -22,6 +22,12 @@
 			<div class="box-header with-border">
 				<h3 class="box-title">Data Mahasiswa</h3>
 				<div class="box-tools pull-right">
+          <a href="<?php echo site_url();?>dosen/Mahasiswa/tambahDataMahasiswa" data-rel="collapse">
+            <button type="button" class="btn btn-primary">
+            <i class="glyphicon glyphicon-plus"></i>
+            Tambah
+            </button>
+          </a>
 					<button type="button" class="toggle-expand-btn btn btn-box-tool btn-sm">
 						<i class="fa fa-expand"></i>
 					</button>
@@ -60,7 +66,11 @@
                       <td><?php echo $i['jenisKelamin']; ?></td>
                       <td><?php echo $i['email']; ?></td>
                       <td>
-                        <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $i['nim']; ?>"><button type="button" class="btn btn-primary">Detail Data</button></a>
+                        <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $i['nim']; ?>">
+                          <button type="button" class="btn btn-primary">
+                            Detail Data
+                          </button>
+                        </a>
                         <!-- <a data-id="<?php echo $i['nim']; ?>" data-toggle="modal" data-target="#konfirmHapus" href="javascript;:"> <button type="button" class="btn btn-danger" >Hapus Data</button></a> -->
                       </td>
                     </tr>

@@ -57,14 +57,14 @@
                     </thead>
                     <tbody>
                     <?php foreach($mhs->result_array() as $i):
-											if ($i['statusKajian'] == "Menunggu Verifikasi") {
+											if ($i['statusKajian'] == "0") {
 										?>
 
                     <tr>
                       <td><input type="checkbox" class="data-check" value="<?php echo $i['nim']; ?>"></td>
                       <td><?php echo $i['namaLengkap']; ?></td>
                       <td><?php echo $i['nim']; ?></td>
-                      <td><?php echo $i['kajian']; ?></td>
+                      <td><?php echo $i['namaKajian']; ?></td>
                       <td><?php echo $i['namaInstansi']; ?></td>
                       <td><?php echo $i['statusKajian']; ?></td>
                       <td>
@@ -108,12 +108,12 @@
 											</tr>
 										</thead>
 										<tbody>
-										<?php if ($i['statusKajian'] == "Terverifikasi") {?>
+										<?php if ($i['statusKajian'] == "1") {?>
 										<tr>
 											<td><input type="checkbox" class="data-check" value="<?php echo $i['nim']; ?>"></td>
 											<td><?php echo $i['namaLengkap']; ?></td>
 											<td><?php echo $i['nim']; ?></td>
-											<td><?php echo $i['kajian']; ?></td>
+											<td><?php echo $i['namaKajian']; ?></td>
 											<td><?php echo $i['namaInstansi']; ?></td>
 											<td><?php echo $i['statusKajian']; ?></td>
 											<td>

@@ -216,7 +216,7 @@ $this->load->view('dosen/header');
                   </section>
 		             </div>
 		             <div class="tab-pane" id="tab_2">
-                   <?php if($d->statusKajian != "Terverifikasi"){?>
+                   <?php if($d->statusKajian != "1"){?>
                      <a data-id="<?php echo $d->nim; ?>" data-toggle="modal" data-target="#konfirmVerifikasi" href="javascript;:"><button type="button" class="btn btn-primary">Verifikasi</button></a>
                   <?php } ?>
                    <div class="box-body">
@@ -228,13 +228,13 @@ $this->load->view('dosen/header');
                              <div class="form-group">
                                <label for="inputName" class="col-sm-2 control-label">Status Pemilihan Kajian</label>
                                <div class="col-sm-10">
-                                 <h5><?php if($d->statusKajian == ""){echo "-";}else {echo $d->statusKajian;}?></h5>
+                                 <h5><?php if($d->statusKajian == "0"){echo "Belum diverifikasi";}else {echo "Terverifikasi";}?></h5>
                                </div>
                              </div>
                              <div class="form-group">
                                <label for="inputEmail" class="col-sm-2 control-label">Bidang Kajian dipilih</label>
                                <div class="col-sm-10">
-                                 <h5><?php if($d->kajian == ""){echo "-";}else {echo $d->kajian;}?></h5>
+                                 <h5><?php if($d->namaKajian == ""){echo "-";}else {echo $d->namaKajian;}?></h5>
                                </div>
                              </div>
                              <div class="form-group">

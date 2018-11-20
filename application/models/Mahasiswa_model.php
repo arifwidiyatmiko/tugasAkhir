@@ -24,10 +24,23 @@ class Mahasiswa_model extends CI_model {
 		$this->db->select('*');
 		$this->db->from('mahasiswa');
 	    $this->db->join('bidangkajian', 'bidangkajian.nim = mahasiswa.nim','left');
+			$this->db->join('kajian', 'bidangkajian.idKajian = kajian.idKajian','left');
 	    $this->db->join('instansi', 'bidangkajian.idInstansi = instansi.idInstansi','left');
 		$this->db->where('mahasiswa.nim',$id);
 		return $this->db->get();
 	}
+
+	public function getIdDospem($id)
+	{
+		$this->db->select('*');
+		$this->db->from('mahasiswa');
+	    $this->db->join('bidangkajian', 'bidangkajian.nim = mahasiswa.nim','left');
+			$this->db->join('kajian', 'bidangkajian.idKajian = kajian.idKajian','left');
+	    $this->db->join('instansi', 'bidangkajian.idInstansi = instansi.idInstansi','left');
+		$this->db->where('bidangkajian.idDospem',$id);
+		return $this->db->get();
+	}
+
 	public function insert($value)
 	{
 		$this->db->insert('mahasiswa', $value);
