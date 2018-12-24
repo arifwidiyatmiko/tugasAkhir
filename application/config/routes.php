@@ -70,6 +70,7 @@ $route['semuadatamhs'] = 'dosen/Mahasiswa/listMahasiswaAll';
 $route['semuadatadosen'] = 'dosen/Dosen/listDosenAll';
 $route['semuadatainstansi'] = 'dosen/Instansi/listInstansiAll';
 $route['bidangkajian'] = 'dosen/BidangKajian/listData';
+$route['plotpembimbing'] = 'dosen/BidangKajian/viewPlotDosen';
 
 //Buat diarahkan ke detail mahasiswa
 $route['detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';

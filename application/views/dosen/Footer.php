@@ -32,7 +32,8 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url()?>assets/scripts/adminlte.min.js"></script>
 <!-- SELECT 2 -->
-<script src="<?= base_url()?>assets/plugins/select2/select2.min.js"></script>
+<!-- <script src="<?= base_url()?>assets/plugins/select2/select2.min.js"></script> -->
+<script src="<?= base_url()?>assets/plugins/select21/dist/js/select2.full.min.js"></script>
  <!-- LEAFLET -->
 
 <script type="text/javascript">
@@ -43,7 +44,5 @@
 	});
 </script>
 
-
 </body>
 </html>
-

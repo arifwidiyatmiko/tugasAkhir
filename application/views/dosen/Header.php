@@ -20,7 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- Chosen -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/plugins/chosen/chosen.css">
 	 <!-- SELECT 2 -->
-    <link rel="stylesheet" href="<?= base_url();?>assets/plugins/select2/select2.min.css">
+  <!-- <link rel="stylesheet" href="<?= base_url();?>assets/plugins/select2/select2.min.css"> -->
+	<link rel="stylesheet" href="<?= base_url();?>assets/plugins/select21/dist/css/select2.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/styles/AdminLTE.min.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -159,6 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </a>
           <ul class="treeview-menu">
             <li><a href="<?=base_url()?>bidangkajian"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
+						<li><a href="<?=base_url()?>plotpembimbing"><i class="fa fa-circle-o"></i>Ploting Dosen Pembimbing</a></li>
 						<li><a href="<?=base_url()?>semuadatadosen"><i class="fa fa-circle-o"></i>Data Dosen</a></li>
 						<li><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
 						<li><a href="<?=base_url()?>semuadatainstansi"><i class="fa fa-circle-o"></i>Data Instansi</a></li>

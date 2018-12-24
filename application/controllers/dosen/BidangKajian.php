@@ -25,6 +25,8 @@ class BidangKajian extends CI_Controller {
               $this->load->model('BidangKajian_model');
               $this->load->model('Kajian_model');
               $this->load->model('ProgramStudi_model');
+							$this->load->model('Dosen_model');
+							$this->load->model('Mahasiswa_model');
 
         }
 	public function listData()
@@ -76,7 +78,7 @@ class BidangKajian extends CI_Controller {
 				$data = array('namaKajian'=>strtoupper($this->input->post('namaKajian')));
 				$idKajian = $this->Kajian_model->insert($data);
 				$res = [];
-				// print_r($this->input->post('idProgramStudi'));die();	
+				// print_r($this->input->post('idProgramStudi'));die();
 				foreach ($this->input->post('idProgramStudi') as $key => $value) {
 					$res['idKajian'] = $idKajian;
 					$res['idProgramStudi'] = $value;
@@ -109,5 +111,19 @@ class BidangKajian extends CI_Controller {
 				$this->load->view('dosen/Footer');
 				break;
 		}
+	}
+	public function viewPlotDosen()
+	{
+		$dosen =  $this->Dosen_model->getAll()->result();
+		if ($dosen)
+		{
+			$data['datadosen']= $dosen;
+		}
+		$mhs =	$this->Mahasiswa_model->getAll()->result();
+		if ($mhs)
+		{
+			$data['datamhs'] = $mhs;
+		}
+		$this->load->view('dosen/FormPlotDospem', $data);
 	}
 }
