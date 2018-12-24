@@ -46,8 +46,9 @@ class Welcome extends CI_Controller {
 			redirect('Welcome/changePass','refresh');
 		}
 		$biodata = $this->Mahasiswa_model->getByWhere(array('nim'=>$this->session->userdata('mahasiswa')->nim))->result()[0];
-		// print_r($biodata);die();
-		if ($biodata->tanggalLahir != NULL && $biodata->tempatLahir != NULL && $biodata->jenisKelamin != NULL && $biodata->jalurMasuk != NULL && $biodata->programStudi != NULL && $biodata->ibuKandung != NULL && $biodata->telepon != NULL && $biodata->NIK != NULL && $biodata->agama != NULL && $biodata->alamatTinggal) {
+		// echo json_encode($biodata);die();
+		if ($biodata->tanggalLahir != NULL && $biodata->tempatLahir != NULL && $biodata->jenisKelamin != NULL && $biodata->jalurMasuk != NULL &&  $biodata->ibuKandung != NULL && $biodata->telepon != NULL && $biodata->NIK != NULL && $biodata->agama != NULL && $biodata->alamatTinggal
+	!= NULL) {
 			$data['isKajian'] = TRUE;
 		}else{$data['isKajian']=FALSE;}
 		if ($biodata->isConfirm == 0) {
@@ -95,7 +96,7 @@ class Welcome extends CI_Controller {
 	{
 		$data = array('idKajian' => $this->input->post('kajian'),'nim'=>$this->session->userdata('mahasiswa')->nim,'statusKajian'=>0);
 		$where = array('namaInstansi'=>$this->input->post('namaInstansi'),'pimpinanInstansi'=>$this->input->post('pimpinanInstansi'),'kontakInstansi'=>$this->input->post('kontakInstansi'),'posInstansi'=>$this->input->post('posInstansi'),'emailInstansi'=>$this->input->post('emailInstansi'),'alamatInstansi'=>$this->input->post('alamatInstansi'),'kotaKabInstansi'=>$this->input->post('kotaKabInstansi'));
-		
+
 		$res = $this->Instansi_model->getLikeWhere($where);
 		// print_r($res->result());die();
 		if ($res->num_rows() > 0) {
@@ -114,15 +115,15 @@ class Welcome extends CI_Controller {
 			$this->BidangKajian_model->insert($data);
 		}
 		redirect('Welcome/kajian','refresh');
-		
+
 	}
 	public function UploadFile($image,$name)
 	{
 		if ($image['size'] > 0) {
 			// echo "string";die();
 			$file_name = 'SB1_'.$this->session->userdata('mahasiswa')->nim.'_';
-			$config['upload_path']   = './assets/filemahasiswa/SB/'; 
-	        $config['allowed_types'] = 'pdf|PDF'; 
+			$config['upload_path']   = './assets/filemahasiswa/SB/';
+	        $config['allowed_types'] = 'pdf|PDF';
 	        $config['max_size']      = 512000;
 	        $config['file_name'] = $file_name;
 	        $this->upload->initialize($config);
@@ -143,8 +144,8 @@ class Welcome extends CI_Controller {
 		if ($image['size'] > 0) {
 			// echo "string";die();
 			$file_name = 'PF_'.$this->session->userdata('mahasiswa')->nim.'_';
-			$config['upload_path']   = './assets/filemahasiswa/pasfoto/'; 
-	        $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG'; 
+			$config['upload_path']   = './assets/filemahasiswa/pasfoto/';
+	        $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG';
 	        $config['max_size']      = 204800;
 	        $config['file_name'] = $file_name;
 	        $this->upload->initialize($config);
@@ -163,44 +164,44 @@ class Welcome extends CI_Controller {
 	public function submit()
 	{
 			$data = array(
-			'namaLengkap' => strtoupper($this->input->post('namaLengkap')), 
-			'tempatLahir' => strtoupper($this->input->post('tempatLahir')), 
+			'namaLengkap' => strtoupper($this->input->post('namaLengkap')),
+			'tempatLahir' => strtoupper($this->input->post('tempatLahir')),
 			'tanggalLahir' => substr($this->input->post('tanggalLahir'),6,4)."-".substr($this->input->post('tanggalLahir'),3,2)."-".substr($this->input->post('tanggalLahir'),0,2),
-// 			'tanggalLahir' => date("Y-m-d",strtotime($this->input->post('tanggalLahir'))), 
-			'jenisKelamin' => $this->input->post('jenisKelamin'), 
-			'jalurMasuk' => $this->input->post('jalurMasuk'), 
-			'ibuKandung' => strtoupper($this->input->post('ibuKandung')), 
-// 			'tanggalMasuk' => date("Y-m-d",strtotime($this->input->post('tanggalMasuk'))), 
+// 			'tanggalLahir' => date("Y-m-d",strtotime($this->input->post('tanggalLahir'))),
+			'jenisKelamin' => $this->input->post('jenisKelamin'),
+			'jalurMasuk' => $this->input->post('jalurMasuk'),
+			'ibuKandung' => strtoupper($this->input->post('ibuKandung')),
+// 			'tanggalMasuk' => date("Y-m-d",strtotime($this->input->post('tanggalMasuk'))),
 			'tanggalMasuk' => substr($this->input->post('tanggalMasuk'),6,4)."-".substr($this->input->post('tanggalMasuk'),3,2)."-".substr($this->input->post('tanggalMasuk'),0,2),
-			// 'programStudi' => $this->input->post('programStudi'), 
-			'batasStudi' => '2023', 
-			'tinggi' => $this->input->post('tinggi'), 
-			'berat' => $this->input->post('berat'), 
-			'kewarganegaraan' => $this->input->post('kewarganegaraan'), 
-			'golonganDarah' => $this->input->post('golonganDarah'), 
-			'statusKawin' => $this->input->post('statusKawin'), 
-			'agama' => strtoupper($this->input->post('agama')), 
-			'alamatTinggal' => $this->input->post('alamatTinggal'), 
-			'kotakabupatenTinggal' => $this->input->post('kotaKabupatenTinggal'), 
-			'kecamatanTinggal' => $this->input->post('kecamatanTinggal'), 
-			'kelurahanTinggal' => $this->input->post('kelurahanTinggal'), 
-			'posTinggal' => $this->input->post('kodepos'), 
-			'rtrwTinggal' => $this->input->post('rt')."/".$this->input->post('rw'), 
-			'alamatDomisili' => $this->input->post('alamatDomisili'), 
-			'kotakabupatenDomisili' => $this->input->post('kotaKabupatenDomisili'), 
-			'kecamatanDomisili' => $this->input->post('kecamatanDomisili'), 
-			'kelurahanDomisili' => $this->input->post('kelurahanDomisili'), 
-			'posDomisili' => $this->input->post('posDomisili'), 
-			'telepon' => $this->input->post('telepon'), 
-			'NIK' => $this->input->post('NIK'), 
+			// 'programStudi' => $this->input->post('programStudi'),
+			'batasStudi' => '2023',
+			'tinggi' => $this->input->post('tinggi'),
+			'berat' => $this->input->post('berat'),
+			'kewarganegaraan' => $this->input->post('kewarganegaraan'),
+			'golonganDarah' => $this->input->post('golonganDarah'),
+			'statusKawin' => $this->input->post('statusKawin'),
+			'agama' => strtoupper($this->input->post('agama')),
+			'alamatTinggal' => $this->input->post('alamatTinggal'),
+			'kotakabupatenTinggal' => $this->input->post('kotaKabupatenTinggal'),
+			'kecamatanTinggal' => $this->input->post('kecamatanTinggal'),
+			'kelurahanTinggal' => $this->input->post('kelurahanTinggal'),
+			'posTinggal' => $this->input->post('kodepos'),
+			'rtrwTinggal' => $this->input->post('rt')."/".$this->input->post('rw'),
+			'alamatDomisili' => $this->input->post('alamatDomisili'),
+			'kotakabupatenDomisili' => $this->input->post('kotaKabupatenDomisili'),
+			'kecamatanDomisili' => $this->input->post('kecamatanDomisili'),
+			'kelurahanDomisili' => $this->input->post('kelurahanDomisili'),
+			'posDomisili' => $this->input->post('posDomisili'),
+			'telepon' => $this->input->post('telepon'),
+			'NIK' => $this->input->post('NIK'),
 			'penghasilanParent'=>$this->input->post('penghasilanParent'),
 			'rtrwDomisili' => $this->input->post('rtDomisili')."/".$this->input->post('rwDomisili'),
-			'namaAyah'=>$this->input->post('namaAyah'), 
-			'namaIbu'=>$this->input->post('namaIbu'), 
-			'nikAyah'=>$this->input->post('nikAyah'), 
-			'nikIbu'=>$this->input->post('nikIbu'), 
+			'namaAyah'=>$this->input->post('namaAyah'),
+			'namaIbu'=>$this->input->post('namaIbu'),
+			'nikAyah'=>$this->input->post('nikAyah'),
+			'nikIbu'=>$this->input->post('nikIbu'),
 			'email'=>$this->input->post('email'),
-			'isConfirm'=>1 
+			'isConfirm'=>1
 		);
 		$data['pasFoto'] = $this->UploadImage($_FILES['pasFoto'],'pasFoto');
 

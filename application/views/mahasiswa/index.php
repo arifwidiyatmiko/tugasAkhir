@@ -26,7 +26,7 @@
               <span class="info-box-text">Mengisi Biodata</span>
               <span class="info-box-number <?php if($isKajian == TRUE){echo "text-green";}else{echo "text-yellow";}?>"><?php if($isKajian == TRUE){echo "Sudah";}else{echo "Belum";}?></span>
             </div>
-            
+
             <!-- /.info-box-content -->
           </div>
           </a>
@@ -41,7 +41,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Pilih Bidang Kajian</span>
-              <span class="info-box-number">410</span>
+              <!-- <span class="info-box-number">410</span> -->
             </div>
             <!-- /.info-box-content -->
           </div>
