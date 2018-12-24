@@ -37,7 +37,7 @@ class Mahasiswa_model extends CI_model {
 	    $this->db->join('bidangkajian', 'bidangkajian.nim = mahasiswa.nim','left');
 			$this->db->join('kajian', 'bidangkajian.idKajian = kajian.idKajian','left');
 	    $this->db->join('instansi', 'bidangkajian.idInstansi = instansi.idInstansi','left');
-		$this->db->where('bidangkajian.idDospem',$id);
+		$this->db->where('bidangkajian.idDosen',$id);
 		return $this->db->get();
 	}
 

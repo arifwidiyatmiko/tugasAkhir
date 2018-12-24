@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<ul class="sidebar-menu" data-widget="tree">
 				<li class="header">Sistem Tugas Akhir</li>
 				<li>
-					<a href="<?=base_url()?>">
+					<a href="<?=base_url()?>Dosen">
 						<i class="fa fa-home"></i> <span>Dashboard</span>
 					</a>
 				</li>

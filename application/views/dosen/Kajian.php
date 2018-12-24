@@ -107,7 +107,7 @@
   $('#tabel').DataTable();
   $('#idProgramStudi').select2();
   $('#deleteModal').on('show.bs.modal', function(e) {
-                alert($(e.relatedTarget).data('href'));
+                // alert($(e.relatedTarget).data('href'));
                 // $('#form-edit').attr('action', $(e.relatedTarget).data('href'));
                 $('#hrefKajian_m').prop('href', $(e.relatedTarget).data('href'));
                 $('#namaKajian_m').text($(e.relatedTarget).data('name'));
@@ -177,4 +177,4 @@
     </div>
 
   </div>
-</div>  
+</div>
