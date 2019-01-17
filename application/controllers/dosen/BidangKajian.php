@@ -119,11 +119,27 @@ class BidangKajian extends CI_Controller {
 		{
 			$data['datadosen']= $dosen;
 		}
-		$mhs =	$this->Mahasiswa_model->getAll()->result();
+		$mhs =	$this->BidangKajian_model->getMhsKajian()->result();
 		if ($mhs)
 		{
 			$data['datamhs'] = $mhs;
 		}
 		$this->load->view('dosen/FormPlotDospem', $data);
+	}
+	public function updateDospem()
+	{
+		$dosen = $this->input->post('dosen');
+		$mhs = $this->input->post('mhs');
+
+		$idmhs = count($mhs);
+		echo $mhs[0];
+		$data = array(
+			'idDospem' => $dosen
+		);
+		for($i=0 ; $i < $idmhs ; $i++){
+			$where =  $mhs[$i];
+			$this->BidangKajian_model->update($where,$data);
+		}
+		redirect('dosen/BidangKajian/viewPlotDosen');
 	}
 }

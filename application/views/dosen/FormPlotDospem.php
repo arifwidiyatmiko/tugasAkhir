@@ -20,10 +20,11 @@
 			<div class="box-header with-border">
 			</div>
 			<!-- /.box-header -->
-      <form name="add_name" id="add_name">
+      <form action="<?php echo site_url();?>dosen/BidangKajian/updateDospem"
+				method="POST" enctype="multipart/form-data"name="add_name" id="add_name">
         <div class="form-group">
-          <label for="inputNama" class="col-sm-2 control-label">Dosen Pembimbing</label>
-          <select name="mhs[]" class="form-control js-example-basic-single">
+          <label for="inputNama" class="control-label">Dosen Pembimbing</label>
+          <select name="dosen" class="form-control js-example-basic-single">
             <option selected="true" disabled="disabled">--Pilih Dosen Pembimbing--</option>
             <?php foreach($datadosen as $d){ ?>
             <option value="<?php echo $d->id?>"><?php echo $d->nama?></option>
@@ -32,20 +33,12 @@
         </div>
         <div class="form-group">
           <div class="table-responsive">
-            <label for="inputNama" class="col-sm-2 control-label">Daftar Mahasiswa</label>
-            <table class="table table-bordered" id="dynamic_field">
-              <tr>
-                <td>
-                  <select name="mhs[]" class="form-control js-example-basic-single">
-                    <option selected="true" disabled="disabled">--Pilih Mahasiswa--</option>
+            <label for="inputNama" class="control-label">Daftar Mahasiswa (dapat lebih dari satu mahasiswa)</label>
+            <select class="form-control js-example-basic-multiple" name="mhs[]" multiple="multiple">
                     <?php foreach($datamhs as $m){ ?>
-                    <option value="<?php echo $m->nim?>"><?php echo $m->namaLengkap?></option>
+                  <option value="<?php echo $m->nim?>"><?php echo $m->namaLengkap?></option>
                     <?php } ?>
-                  </select>
-                </td>
-                <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-              </tr>
-            </table>
+            </select>
           </div>
         </div>
         <div class="box-footer">
@@ -58,10 +51,10 @@
 </div>
 <script>
 $(document).ready(function() {
-    $(".js-example-basic-single").select2();
+    $('.js-example-basic-multiple').select2();
 });
 </script>
-<script>
+<!-- <script>
 $(document).ready(function(){
      var i=1;
      $('#add').click(function(){
@@ -86,8 +79,7 @@ $(document).ready(function(){
           });
      });
 });
-</script>
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+</script> -->
 <?php
   $this->load->view('dosen/Footer');
 ?>
