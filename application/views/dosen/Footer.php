@@ -9,6 +9,7 @@
 
 <!-- jQuery UI 1.11.4 -->
 <script src="<?= base_url()?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
 	$.widget.bridge('uibutton', $.ui.button);
@@ -21,6 +22,7 @@
 <script src="<?= base_url()?>assets/plugins/datatables.net-Buttons-1.5.2/js/dataTables.buttons.min.js"></script>
 <script src="<?= base_url()?>assets/plugins/datatables.net-JSZip-2.5.0/jszip.min.js"></script>
 <script src="<?= base_url()?>assets/plugins/datatables.net-Buttons-1.5.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.1/js/dataTables.fixedColumns.min.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="<?= base_url()?>assets/plugins/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- Slimscroll -->
@@ -31,6 +33,8 @@
 <script src="<?= base_url()?>assets/plugins/chosen/chosen.jquery.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url()?>assets/scripts/adminlte.min.js"></script>
+<!-- datetimepicker -->
+<script src="<?= base_url();?>assets/datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <!-- SELECT 2 -->
 <!-- <script src="<?= base_url()?>assets/plugins/select2/select2.min.js"></script> -->
 <script src="<?= base_url()?>assets/plugins/select21/dist/js/select2.full.min.js"></script>

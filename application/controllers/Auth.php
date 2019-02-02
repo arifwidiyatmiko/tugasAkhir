@@ -47,6 +47,14 @@ class Auth extends CI_Controller {
 		$this->Mahasiswa_model->update($this->session->userdata('mahasiswa')->nim,$data);
 		redirect('Welcome','refresh');
 	}
+
+	public function ubahPasswordDosen()
+	{
+		// $where = array('nim' => $this->session->userdata('mahasiswa')->nim);
+		$data = array('password' => md5($this->input->post('password')),'passwordChanged'=>1 );
+		$this->Dosen_model->update($this->session->userdata('dosen')->id,$data);
+		redirect('dosen','refresh');
+	}
 	public function dosen($value='')
 	{
 		if ($this->input->server('REQUEST_METHOD') == 'GET') {
@@ -68,7 +76,9 @@ class Auth extends CI_Controller {
 			if ($result->num_rows() > 0) {
 				$this->session->set_userdata('dosen',$result->result()[0]);
 				$this->session->set_flashdata('info', '<div class="alert alert-info alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <h4><i class="icon fa fa-warning"></i> Alert!</h4> Warning alert preview. This alert is dismissable. </div>');
-				redirect('dosen','refresh');
+				if($this->session->userdata('dosen')->passwordChanged ==0){
+					$this->load->view('dosen/UbahPassword');
+				}else {redirect('dosen','refresh');}
 				//echo "Arahin ke kontroller Dosen";
 				// redirect('Welcome','refresh');
 			}else{

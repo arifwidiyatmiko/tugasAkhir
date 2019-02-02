@@ -215,6 +215,7 @@ $this->load->view('dosen/header');
                     </div>
                   </section>
 		             </div>
+                 <!-- tab 2 -->
 		             <div class="tab-pane" id="tab_2">
                    <?php if($d->statusKajian != "1"){?>
                      <a data-id="<?php echo $d->nim; ?>" data-toggle="modal" data-target="#konfirmVerifikasi" href="javascript;:"><button type="button" class="btn btn-primary">Verifikasi</button></a>

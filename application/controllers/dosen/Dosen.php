@@ -36,6 +36,11 @@ class Dosen extends CI_Controller {
 		$this->load->view('dosen/ListDosenAll', $data);
 		//$this->load->view('dosen/ListMahasiswaAll');
 	}
+	public function listDosenAllAjax()
+	{
+		$data['dosen']=$this->Dosen_model->getAll()->result();
+		echo json_encode($data['dosen']);
+	}
   public function tambahDataDosen()
   {
     $data['dosen']=$this->Dosen_model->getAll();
@@ -85,6 +90,27 @@ class Dosen extends CI_Controller {
 		redirect('dosen/Dosen/listDosenAll');
   }
 
+	public function simpanUbahProfil()
+	{
+		$id = $this->input->post('id');
+		$nama = $this->input->post('nama_dosen');
+		$email = $this->input->post('email_dosen');
+		$nip = $this->input->post('nip_dosen');
+
+		$data = array(
+			'nama' => $nama,
+			'email' => $email,
+			'nip' => $nip
+			);
+		$this->Dosen_model->update($id,$data);
+		$data2 = array(
+			'id' => $id
+		);
+		$result = $this->Dosen_model->getByWhere($data2);
+		$this->session->set_userdata('dosen',$result->result()[0]);
+		redirect('dosen/Dosen/listDosenAll');
+	}
+
   public function hapusDataDosen($id)
 	{
 		$this->Dosen_model->delete($id);
@@ -95,5 +121,12 @@ class Dosen extends CI_Controller {
 	{
 		$data['detaildosen']=$this->Dosen_model->getId($id)->result();
 		$this->load->view('dosen/FormEditDosen',$data);
+	}
+
+	public function editProfil()
+	{
+		$id = $this->session->userdata('dosen')->id;
+		$data['detaildosen']=$this->Dosen_model->getId($id)->result();
+		$this->load->view('dosen/FormEditProfil',$data);
 	}
 }

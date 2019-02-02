@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= base_url();?>assets/datetimepicker/css/bootstrap-datetimepicker.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
@@ -112,19 +113,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			              <!-- User image -->
 			              <li class="user-header">
 			                <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
-
-			                <p>
-			                  Alexander Pierce - Web Developer
-			                </p>
 			              </li>
 			              <!-- Menu Body -->
 			              <!-- Menu Footer-->
 			              <li class="user-footer">
 			                <div class="pull-left">
-			                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+			                  <a href="<?= base_url();?>editProfil" class="btn btn-default btn-flat">Edit Profil</a>
 			                </div>
 			                <div class="pull-right">
-			                  <a href="<?= base_url();?>Auth/outdosen" class="btn btn-default btn-flat">Sign out</a>
+			                  <a href="<?= base_url();?>Auth/outdosen" class="btn btn-default btn-flat">Keluar</a>
 			                </div>
 			              </li>
 			            </ul>
@@ -151,22 +148,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 				</li>
 				<?php if($this->session->userdata('dosen')->isAdmin == 1){?>
-				<li class="active treeview">
-          <a href="#">
-            <i class="fa fa-folder-open"></i> <span>Panitia PKL</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?=base_url()?>bidangkajian"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
-						<li><a href="<?=base_url()?>plotpembimbing"><i class="fa fa-circle-o"></i>Ploting Dosen Pembimbing</a></li>
-						<li><a href="<?=base_url()?>semuadatadosen"><i class="fa fa-circle-o"></i>Data Dosen</a></li>
-						<li><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
-						<li><a href="<?=base_url()?>semuadatainstansi"><i class="fa fa-circle-o"></i>Data Instansi</a></li>
-						<li><a href="<?=base_url()?>dosen/BidangKajian/kajian"><i class="fa fa-circle-o"></i>Data Kajian</a></li>
-          </ul>
-        </li>
+					<li class="treeview">
+						<a href="#">
+	            <i class="fa fa-folder-open"></i> <span>Panitia PKL</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+							<li><a href="<?=base_url()?>plotpembimbing"><i class="fa fa-circle-o"></i>Ploting Dosen Pembimbing</a></li>
+							<li><a href="<?=base_url()?>bidangkajian"><i class="fa fa-circle-o"></i>Bidang Kajian Mahasiswa</a></li>
+							<li class="treeview">
+	              <a href="#"><i class="fa fa-circle-o"></i> Seminar Mahasiswa
+	                <span class="pull-right-container">
+	                  <i class="fa fa-angle-left pull-right"></i>
+	                </span>
+	              </a>
+	              <ul class="treeview-menu">
+									<li><a href="<?=base_url()?>jadwalseminar"><i class="fa fa-circle-o"></i>Jadwal Seminar</a></li>
+									<li><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Nilai Seminar</a></li>
+	              </ul>
+	            </li>
+							<li class="treeview">
+	              <a href="#"><i class="fa fa-circle-o"></i> Data Master
+	                <span class="pull-right-container">
+	                  <i class="fa fa-angle-left pull-right"></i>
+	                </span>
+	              </a>
+	              <ul class="treeview-menu">
+									<li><a href="<?=base_url()?>semuadatadosen"><i class="fa fa-circle-o"></i>Data Dosen</a></li>
+									<li><a href="<?=base_url()?>semuadatamhs"><i class="fa fa-circle-o"></i>Data Mahasiswa</a></li>
+									<li><a href="<?=base_url()?>semuadatainstansi"><i class="fa fa-circle-o"></i>Data Instansi</a></li>
+									<li><a href="<?=base_url()?>dosen/BidangKajian/kajian"><i class="fa fa-circle-o"></i>Data Kajian</a></li>
+	              </ul>
+	            </li>
+	          </ul>
+	        </li>
 			<?php } ?>
 			</ul>
 		</section>

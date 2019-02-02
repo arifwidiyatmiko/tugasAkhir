@@ -71,6 +71,8 @@ $route['semuadatadosen'] = 'dosen/Dosen/listDosenAll';
 $route['semuadatainstansi'] = 'dosen/Instansi/listInstansiAll';
 $route['bidangkajian'] = 'dosen/BidangKajian/listData';
 $route['plotpembimbing'] = 'dosen/BidangKajian/viewPlotDosen';
+$route['editProfil'] = 'dosen/Dosen/editProfil';
+$route['jadwalseminar'] = 'dosen/JadwalSeminar/viewJadwal';
 
 //Buat diarahkan ke detail mahasiswa
 $route['detailmahasiswa'] = 'dosen/Mahasiswa/detailMahasiswa';

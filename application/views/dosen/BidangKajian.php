@@ -51,7 +51,7 @@
                         <th>NIM</th>
                         <th>Bidang Kajian</th>
                         <th>Nama Instansi</th>
-                        <th>Status Proses</th>
+                        <th>Pembimbing</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -66,7 +66,7 @@
                       <td><?php echo $i['nim']; ?></td>
                       <td><?php echo $i['namaKajian']; ?></td>
                       <td><?php echo $i['namaInstansi']; ?></td>
-                      <td><?php echo $i['statusKajian']; ?></td>
+                      <td><?php echo $i['nama']; ?></td>
                       <td>
                         <a href="<?php echo site_url();?>dosen/Mahasiswa/detailMahasiswa/<?php echo $i['nim']; ?>"><button type="button" class="btn btn-primary">Detail Data</button></a>
                         <!-- <a href="<?php echo site_url();?>dosen/BidangKajian/updateVerifikasiSatu/<?php echo $i['nim']; ?>"><button type="button" class="btn btn-primary">Verifikasi</button></a> -->
@@ -81,7 +81,7 @@
                         <th>NIM</th>
                         <th>Bidang Kajian</th>
                         <th>Nama Instansi</th>
-                        <th>Status Proses</th>
+                        <th>Pembimbing</th>
                         <th>Aksi</th>
                       </tr>
                     </tfoot>

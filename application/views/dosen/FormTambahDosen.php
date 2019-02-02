@@ -58,35 +58,30 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="inputNama" class="col-sm-2 control-label">Nama Lengkap Dosen</label>
-
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="inputNama" name='nama_dosen' placeholder="Nama Lengkap" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="nip" class="col-sm-2 control-label">NIP</label>
-
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="nip" name='nip_dosen' placeholder="NIP">
                 </div>
               </div>
               <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email</label>
-
                 <div class="col-sm-10">
                   <input type="email" class="form-control" id="email" name='email_dosen' placeholder="Email" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">Username</label>
-
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="username" name='username_dosen' placeholder="Username" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="role_dosen" class="col-sm-2 control-label">Status</label>
-
                 <div class="col-sm-10">
                   <select class="form-control" name="status" required>
                     <option value="">--Status Dosen--</option>
